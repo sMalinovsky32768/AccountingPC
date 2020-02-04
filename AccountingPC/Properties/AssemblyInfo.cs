@@ -8,9 +8,9 @@ using System.Windows;
 // набор атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 [assembly: AssemblyTitle("AccountingPC")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Дипломный проект Дико С. В.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Mali Software")]
 [assembly: AssemblyProduct("AccountingPC")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
