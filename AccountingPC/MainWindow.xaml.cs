@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccountingPC.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Security.Cryptography;
 
 namespace AccountingPC
 {
@@ -23,6 +25,26 @@ namespace AccountingPC
         public MainWindow()
         {
             InitializeComponent();
+            loginTextBox.Focus();
+        }
+
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            string login = loginTextBox.Text;
+            string uName = Settings.Default.USER_NAME;
+            string enPass = Convert.ToBase64String(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(passwordTextBox.Password)));
+            string setPass = Settings.Default.PASSWORD_HASH;
+            bool isTrueLogin = login == uName;
+            bool isTruePassword = enPass == setPass;
+            if (isTrueLogin && isTruePassword)
+            {
+                new AccountingPCWindow().Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Неправильный логин или пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
