@@ -17,9 +17,66 @@ namespace AccountingPC
     /// </summary>
     public partial class App : Application
     {
+        public System.Windows.Forms.NotifyIcon notify;
+        private System.Windows.Forms.ContextMenu notifyContextMenu;
+
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            /*string str;
+            notify = new System.Windows.Forms.NotifyIcon(new System.ComponentModel.Container());
+            notifyContextMenu = new System.Windows.Forms.ContextMenu( new System.Windows.Forms.MenuItem[] 
+            { new System.Windows.Forms.MenuItem("Выход", new EventHandler(ShutdownCurrentApp)) });
+            notify.Icon = new System.Drawing.Icon("images/icon.ico");
+            notify.ContextMenu = notifyContextMenu;
+            notify.Text = "AccountingPC";
+            notify.Visible = true;
+            notify.DoubleClick += new System.EventHandler(NotifyDoubleClick);
+            SetUserCredentials();
+            // CreateDB();
+        }
+
+        private void ShutdownCurrentApp(object sender, EventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+        private void NotifyDoubleClick(object sender, EventArgs e)
+        {
+            bool isOpenWindow = false;
+            foreach (Window w in App.Current.Windows.OfType<Window>())
+            {
+                if ((w.WindowState == WindowState.Minimized) || (!w.IsActive))
+                {
+                    isOpenWindow = true;
+                }
+            }
+            if (!isOpenWindow)
+            {
+                new MainWindow().Show();
+            }
+        }
+
+        private void SetUserCredentials(string login, string pass)
+        {
+            if (Settings.Default.USER_NAME == null || Settings.Default.USER_NAME == "")
+                Settings.Default.USER_NAME = login;
+            if (Settings.Default.PASSWORD_HASH == null || Settings.Default.PASSWORD_HASH == "")
+                Settings.Default.PASSWORD_HASH = Convert.ToBase64String(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(pass)));
+            Settings.Default.Save();
+        }
+
+        private void SetUserCredentials(string userCredentials)
+        {
+            SetUserCredentials(userCredentials, userCredentials);
+        }
+
+        private void SetUserCredentials()
+        {
+            SetUserCredentials("admin");
+        }
+
+        private void CreateDB()
+        {
+            string str;
             SqlConnection myConn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True");
             str = "if not exists (select * from sys.databases where name=N'Accounting')"
                   + "begin"
@@ -111,12 +168,7 @@ namespace AccountingPC
                 {
                     myConn.Close();
                 }
-            }*/
-            if (Settings.Default.USER_NAME == null || Settings.Default.USER_NAME == "")
-                Settings.Default.USER_NAME = "admin";
-            if (Settings.Default.PASSWORD_HASH == null || Settings.Default.PASSWORD_HASH == "")
-                Settings.Default.PASSWORD_HASH = Convert.ToBase64String(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes("admin")));
-            Settings.Default.Save();
+            }
         }
     }
 }

@@ -55,6 +55,7 @@ namespace AccountingPC
         private void CancelClick(object sender, RoutedEventArgs e)
         {
             Close();
+            App.Current.Shutdown();
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

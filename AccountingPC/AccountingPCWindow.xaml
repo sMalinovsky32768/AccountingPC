@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="AccountingPC" Height="{DynamicResource {x:Static SystemParameters.VirtualScreenHeightKey}}" 
         Width="{DynamicResource {x:Static SystemParameters.VirtualScreenWidthKey}}" 
-        MinWidth="800" MinHeight="450" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        MinWidth="800" MinHeight="450" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="images/icon.ico">
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:AccountingPCWindow.ParametersCommand}" Executed="OpenParameters"/>
         <CommandBinding Command="{x:Static local:AccountingPCWindow.ExitCommand}" Executed="ExitApp"/>
