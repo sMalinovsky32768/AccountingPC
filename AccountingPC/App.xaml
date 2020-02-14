@@ -4,7 +4,17 @@
              xmlns:local="clr-namespace:AccountingPC"
              StartupUri="MainWindow.xaml" Startup="Application_Startup">
     <Application.Resources>
-        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Bootstrap.xaml"/>
+                <!--<ResourceDictionary Source="Styles/Brushes.xaml"/>
+                <ResourceDictionary Source="Styles/CoreStyles.xaml"/>
+                <ResourceDictionary Source="Styles/Fonts.xaml"/>
+                <ResourceDictionary Source="Styles/SDKStyles.xaml"/>
+                <ResourceDictionary Source="Styles/Styles.xaml"/>-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        <!--<Style x:Key="TextBlockStyle" TargetType="TextBlock">
             <Setter Property="Margin" Value="10"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
@@ -27,16 +37,15 @@
             <Setter Property="Padding" Value="10"/>
             <Setter Property="FontSize" Value="16"/>
         </Style>
-        <!--<Style TargetType="DataGridCell">
-            <Setter Property="DataGridCell.VerticalAlignment" Value="Center"/>
-            <Setter Property="DataGridCell.HorizontalAlignment" Value="Center"/>
-        </Style>-->
+        <Style TargetType="DataGridCell">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
         <Style TargetType="DataGrid">
             <Setter Property="ColumnHeaderHeight" Value="40"/>
         </Style>
-
         <Style TargetType="ListBoxItem">
             <Setter Property="Padding" Value="10"/>
-        </Style>
+        </Style>-->
     </Application.Resources>
 </Application>

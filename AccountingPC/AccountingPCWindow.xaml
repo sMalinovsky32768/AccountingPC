@@ -1,9 +1,10 @@
-﻿<Window x:Class="AccountingPC.AccountingPCWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AccountingPC"
+        xmlns:Data="clr-namespace:System.Data;assembly=System.Data" x:Class="AccountingPC.AccountingPCWindow"
         mc:Ignorable="d"
         Title="AccountingPC" Height="{DynamicResource {x:Static SystemParameters.VirtualScreenHeightKey}}" 
         Width="{DynamicResource {x:Static SystemParameters.VirtualScreenWidthKey}}" 
@@ -30,8 +31,9 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
-            <Grid><!--Selecting a category Grid-->
-                
+            <Grid>
+                <!--Selecting a category Grid-->
+
             </Grid>
             <GridSplitter Grid.Column="1" Width="2" ResizeBehavior="PreviousAndNext"/>
             <Grid Grid.Column="2">
@@ -41,18 +43,26 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition MaxHeight="300"/>
                 </Grid.RowDefinitions>
-                <Grid><!--Information Category Grid-->
-                    
+                <Grid>
+                    <!--Information Category Grid-->
+
                 </Grid>
-                <Grid Grid.Row="1"><!--Main Grid-->
-                    <DataGrid>
+                <Grid Grid.Row="1">
+                    <DataGrid x:Name="view"><!--="{Binding Mode=OneWay, Source={StaticResource table-dark}}">-->
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Инвентарный номер"/>
+                            <DataGridTextColumn Header="Инвентарный номер" Binding="{Binding Path=Inventory}"/>
+                            <DataGridTextColumn Header="Название" Binding="{Binding Path=Name}"/>
                         </DataGrid.Columns>
+                        <DataGrid.Items>
+                            <local:PC Inventory="1234" Name="qwerty"/>
+                            <local:PC Inventory="5678" Name="asdfgh"/>
+                            <local:PC Inventory="9012" Name="zxcvbn"/>
+                        </DataGrid.Items>
                     </DataGrid>
                 </Grid>
                 <GridSplitter Grid.Row="2" Height="2" ResizeBehavior="PreviousAndNext"/>
-                <Grid Grid.Row="3"><!--Information Device Grid-->
+                <Grid Grid.Row="3">
+                    <!--Information Device Grid-->
 
                 </Grid>
             </Grid>

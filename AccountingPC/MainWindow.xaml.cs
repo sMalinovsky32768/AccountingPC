@@ -22,13 +22,18 @@ namespace AccountingPC
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Выход при Esc
+        public static readonly RoutedCommand ExitCommand = new RoutedUICommand(
+            "Exit", "ExitCommand", typeof(MainWindow),
+            new InputGestureCollection(new InputGesture[] { new KeyGesture(Key.Escape) }));
+
         public MainWindow()
         {
             InitializeComponent();
             loginTextBox.Focus();
         }
 
-        private void Login_Click(object sender, RoutedEventArgs e)
+        private void LoginClick(object sender, RoutedEventArgs e)
         {
             string login = loginTextBox.Text;
             string uName = Settings.Default.USER_NAME;
@@ -45,6 +50,16 @@ namespace AccountingPC
             {
                 MessageBox.Show("Неправильный логин или пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void CancelClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();// Для перемещение ока
         }
     }
 }

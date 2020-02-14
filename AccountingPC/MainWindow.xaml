@@ -1,25 +1,59 @@
-﻿<Window x:Class="AccountingPC.MainWindow"
+﻿<Window x:Name="window" x:Class="AccountingPC.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AccountingPC"
         mc:Ignorable="d"
-        Title="Авторизация" Height="200" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Text="Логин" Style="{Binding Mode=OneWay, Source={StaticResource TextBlockStyle}}"/>
-        <TextBox Grid.Column="1" x:Name="loginTextBox" Style="{Binding Mode=OneWay, Source={StaticResource TextBoxStyle}}"/>
-        <TextBlock Grid.Row="1" Text="Пароль" Style="{Binding Mode=OneWay, Source={StaticResource TextBlockStyle}}"/>
-        <PasswordBox Grid.Row="1" Grid.Column="1" x:Name="passwordTextBox" Style="{Binding Mode=OneWay, Source={StaticResource PasswordBoxStyle}}"/>
-        <Button Grid.Row="2" Grid.Column="1" Content="Войти" Click="Login_Click" IsDefault="True"/>
-    </Grid>
+        Title="Авторизация" Height="150" Width="350" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" Style="{DynamicResource ResourceKey=window}" 
+        WindowStyle="None">
+    <Window.Resources>
+        <Style x:Key="btn-dark-main" BasedOn="{StaticResource ResourceKey=btn-dark}">
+            <Setter Property="Button.Margin" Value="10 5 10 10"/>
+        </Style>
+        <Style x:Key="text-box-main" BasedOn="{StaticResource ResourceKey=text-box}">
+            <Setter Property="TextBox.Margin" Value="10 5 10 10"/>
+        </Style>
+        <Style x:Key="password-box-main" BasedOn="{StaticResource ResourceKey=password-box}">
+            <Setter Property="PasswordBox.Margin" Value="10 5 10 10"/>
+        </Style>
+        <Style x:Key="text-block-main">
+            <Setter Property="TextBlock.FontSize" Value="14"/>
+            <Setter Property="TextBlock.Margin" Value="10,20,10,5"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+            <Setter Property="TextBlock.FontFamily" Value="Source Sans Pro"/>
+        </Style>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.ExitCommand}" Executed="CancelClick"/>
+        <!--Выход при Esc-->
+    </Window.CommandBindings>
+    <Border RenderTransformOrigin="0.5,0.5" Height="{Binding ActualHeight, ElementName=window, Mode=OneWay}" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,-2" EndPoint="0,2">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStop Color="{DynamicResource darkBackground}" Offset="-1"/>
+                    <GradientStop Color="{DynamicResource lightBackground}" Offset="1"/>
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Логин:" Style="{DynamicResource text-block-main}"/>
+            <TextBox Grid.Row="1" x:Name="loginTextBox" Style="{DynamicResource text-box-main}"/>
+            <TextBlock Grid.Column="1" Text="Пароль:" Style="{DynamicResource text-block-main}"/>
+            <PasswordBox Grid.Row="1" Grid.Column="1" x:Name="passwordTextBox" Style="{DynamicResource password-box-main}"/>
+            <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Войти" Click="LoginClick" 
+                IsDefault="True" Style="{DynamicResource btn-dark-main}" HorizontalContentAlignment="Right"/>
+        </Grid>
+    </Border>
 </Window>

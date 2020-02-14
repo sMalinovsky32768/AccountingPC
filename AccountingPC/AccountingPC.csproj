@@ -14,6 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -41,6 +43,7 @@
     <Reference Include="GemBox.Spreadsheet, Version=45.0.35.1084, Culture=neutral, PublicKeyToken=b1b72c69714d4847, processorArchitecture=MSIL">
       <HintPath>..\packages\GemBox.Spreadsheet.45.0.0.1084\lib\net35\GemBox.Spreadsheet.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -61,8 +64,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PC.cs" />
     <Compile Include="SettingsPassword.cs" />
     <Page Include="AccountingPCWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Bootstrap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
