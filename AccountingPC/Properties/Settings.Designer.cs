@@ -46,5 +46,17 @@ namespace AccountingPC.Properties {
                 this["PASSWORD_HASH"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SHUTDOWN_ON_EXPLICIT {
+            get {
+                return ((bool)(this["SHUTDOWN_ON_EXPLICIT"]));
+            }
+            set {
+                this["SHUTDOWN_ON_EXPLICIT"] = value;
+            }
+        }
     }
 }

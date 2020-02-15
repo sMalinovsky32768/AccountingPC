@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AccountingPC"
         mc:Ignorable="d"
-        Title="Параметры" Height="450" Width="800" Topmost="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Параметры" Height="450" Width="800" Topmost="True" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" Closed="ParameterClosed">
     <!--<Window.Resources>
         <Style TargetType="Frame">
             <Setter Property="ContentTemplate">
@@ -26,19 +27,29 @@
         </Style>
     </Window.Resources>-->
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition MaxWidth="400" MinWidth="150"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
         <Grid>
-            <ListBox x:Name="list">
-                <ListBoxItem Content="Основное" Selected="SelectedOption" IsSelected="True"/>
-                <ListBoxItem Content="Стили" Selected="SelectedOption"/>
-                <ListBoxItem Content="Безопасность" Selected="SelectedOption"/>
-            </ListBox>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="400" MinWidth="150"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <ListBox x:Name="list">
+                    <ListBoxItem Content="Основное" Selected="SelectedOption" IsSelected="True"/>
+                    <ListBoxItem Content="Стили" Selected="SelectedOption"/>
+                    <ListBoxItem Content="Безопасность" Selected="SelectedOption"/>
+                </ListBox>
+            </Grid>
+            <GridSplitter Grid.Column="1" Width="2" MaxWidth="2" ResizeBehavior="PreviousAndNext"/>
+            <Frame x:Name="frameSettings" Grid.Column="2" Source="/AccountingPC;component/ParametersPages/ParametersBasicPage.xaml" NavigationUIVisibility="Hidden"/>
         </Grid>
-        <GridSplitter Grid.Column="1" Width="2" MaxWidth="2" Background="Red" ResizeBehavior="PreviousAndNext"/>
-        <Frame x:Name="frameSettings" Grid.Column="2" Source="/AccountingPC;component/ParametersPages/ParametersBasicPage.xaml" NavigationUIVisibility="Hidden"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Отмена" Style="{DynamicResource btn-dark}" Padding="20 5" Margin="5" IsCancel="True" Click="CancelClick"/>
+            <Button Content="ОК" Style="{DynamicResource btn-dark}" Padding="20 5" Margin="5" IsDefault="True" Click="SaveSettings"/>
+        </StackPanel>
     </Grid>
 </Window>

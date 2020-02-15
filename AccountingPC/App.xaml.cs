@@ -22,14 +22,30 @@ namespace AccountingPC
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            if (Settings.Default.SHUTDOWN_ON_EXPLICIT)
+            {
+                App.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+            }
+            else
+            {
+                App.Current.ShutdownMode = ShutdownMode.OnLastWindowClose;
+            }
             notify = new System.Windows.Forms.NotifyIcon(new System.ComponentModel.Container());
             notifyContextMenu = new System.Windows.Forms.ContextMenu( new System.Windows.Forms.MenuItem[] 
             { new System.Windows.Forms.MenuItem("Выход", new EventHandler(ShutdownCurrentApp)) });
             notify.Icon = new System.Drawing.Icon("images/icon.ico");
             notify.ContextMenu = notifyContextMenu;
             notify.Text = "AccountingPC";
-            notify.Visible = true;
             notify.DoubleClick += new System.EventHandler(NotifyDoubleClick);
+            if (App.Current.ShutdownMode == ShutdownMode.OnExplicitShutdown)
+            {
+                notify.Visible = true;
+            }
+            else
+            {
+
+                notify.Visible = false;
+            }
             SetUserCredentials();
             // CreateDB();
         }

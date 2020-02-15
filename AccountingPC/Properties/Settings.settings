@@ -8,5 +8,8 @@
     <Setting Name="PASSWORD_HASH" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="SHUTDOWN_ON_EXPLICIT" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

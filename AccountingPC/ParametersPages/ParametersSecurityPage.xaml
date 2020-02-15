@@ -7,7 +7,13 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600" MaxWidth="600"
       Title="ParametersSecurityPage">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="PageStyleDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -19,13 +25,48 @@
                 <RowDefinition/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <DataGrid x:Name="changePassword" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="Cell">
-                <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="ParameterNameGrid" Header="Параметр" IsReadOnly="True" Binding="{Binding Path=Name}"/>
-                    <DataGridTextColumn x:Name="ParameterValueGrid" Header="Значение" Binding="{Binding Path=Value}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-            <Button Grid.Row="1" Content="Сменить" Width="100" HorizontalAlignment="Right" Click="ChangePasswordClick"/>
+            <Grid x:Name="grid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <GridSplitter Grid.Column="1" Width="2" ResizeBehavior="PreviousAndNext" ShowsPreview="True" 
+                              Grid.RowSpan="{Binding RowDefinitions.Count, ElementName=grid, Mode=OneWay}">
+                    <GridSplitter.Background>
+                        <SolidColorBrush Color="{DynamicResource lightBackground}"/>
+                    </GridSplitter.Background>
+                </GridSplitter>
+                <TextBlock Text="Параметр" Style="{Binding Mode=OneWay, Source={StaticResource header}}"/>
+                <TextBlock Grid.Column="2" Text="Значение" Style="{Binding Mode=OneWay, Source={StaticResource header}}"/>
+                <TextBlock Text="Старый пароль" Grid.Row="1"/>
+                <PasswordBox x:Name="oldPass" Grid.Row="1" Grid.Column="2"/>
+                <TextBlock Text="Новый пароль" Grid.Row="2"/>
+                <PasswordBox x:Name="newPass" Grid.Row="2" Grid.Column="2"/>
+                <TextBlock Text="Повторите пароль" Grid.Row="3"/>
+                <PasswordBox x:Name="repeatPass" Grid.Row="3" Grid.Column="2"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <StatusBar Grid.Column="0">
+                    <StatusBarItem x:Name="changeStatus"/>
+                </StatusBar>
+                <Button Grid.Column="1" Content="Сменить" Width="100" HorizontalAlignment="Right" Click="ChangePasswordClick" 
+                        Style="{DynamicResource btn-dark}" Padding="10 5"/>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

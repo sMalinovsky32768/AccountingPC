@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccountingPC.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace AccountingPC
     /// </summary>
     public partial class ParametersWindow : Window
     {
+        private bool isCancel;
         public ParametersWindow()
         {
             InitializeComponent();
@@ -27,41 +29,41 @@ namespace AccountingPC
         private void SelectedOption(object sender, RoutedEventArgs e)
         {
             ListBoxItem item = (ListBoxItem)sender;
-            /*switch (list.SelectedIndex)
-            {
-                case 0:
-                    frameSettings.Source = new Uri(@"ParametersPages\ParametersBasicPage.xaml", UriKind.Relative);
-                    //frameSettings.Source = new Uri("/AccountingPC;component/ParametersPages/ParametersBasicPage.xaml", UriKind.Relative);
-                    break;
-                case 1:
-                    frameSettings.Source = new Uri(@"ParametersPages\ParametersStylesPage.xaml", UriKind.Relative);
-                    //frameSettings.Source = new Uri("/AccountingPC;component/ParametersPages/ParametersStylePage.xaml", UriKind.Relative);
-                    break;
-                case 2:
-                    frameSettings.Source = new Uri(@"ParametersPages\ParametersSecurityPage.xaml", UriKind.Relative);
-                    //frameSettings.Source = new Uri("/AccountingPC;component/ParametersPages/ParametersSecurityPage.xaml", UriKind.Relative);
-                    break;
-                default:
-                    break;
-            }*/
             if (frameSettings == null)
                 frameSettings = new Frame();
             switch (item.Content)
             {
                 case "Основное":
                     frameSettings.Source = new Uri("ParametersPages/ParametersBasicPage.xaml", UriKind.RelativeOrAbsolute);
-                    //frameSettings.Source = new Uri("/AccountingPC;component/ParametersPages/ParametersBasicPage.xaml", UriKind.Relative);
                     break;
                 case "Стили":
                     frameSettings.Source = new Uri("ParametersPages/ParametersStylesPage.xaml", UriKind.RelativeOrAbsolute);
-                    //frameSettings.Source = new Uri("/AccountingPC;component/ParametersPages/ParametersStylePage.xaml", UriKind.Relative);
                     break;
                 case "Безопасность":
                     frameSettings.Source = new Uri("ParametersPages/ParametersSecurityPage.xaml", UriKind.RelativeOrAbsolute);
-                    //frameSettings.Source = new Uri("/AccountingPC;component/ParametersPages/ParametersSecurityPage.xaml", UriKind.Relative);
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void SaveSettings(object sender, RoutedEventArgs e)
+        {
+            isCancel = false;
+            Close();
+        }
+
+        private void CancelClick(object sender, RoutedEventArgs e)
+        {
+            isCancel = true;
+            Close();
+        }
+
+        private void ParameterClosed(object sender, EventArgs e)
+        {
+            if (!isCancel)
+            {
+                Settings.Default.Save();
             }
         }
     }

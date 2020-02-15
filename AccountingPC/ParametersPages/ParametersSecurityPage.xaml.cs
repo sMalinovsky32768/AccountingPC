@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AccountingPC;
+using AccountingPC.Properties;
 
 namespace AccountingPC.ParametersPages
 {
@@ -21,22 +24,62 @@ namespace AccountingPC.ParametersPages
     /// </summary>
     public partial class ParametersSecurityPage : Page
     {
-        SettingsPassword password;
         public ParametersSecurityPage()
         {
             InitializeComponent();
-            password = new SettingsPassword();
-            //changePassword.ItemsSource = password.Passwords;
-            changePassword.DataContext = password;
-            changePassword.ItemsSource = password.Passwords;
-            ParameterNameGrid.Width = this.MaxWidth / 2;
-            ParameterValueGrid.Width = this.MaxWidth / 2;
         }
 
         private void ChangePasswordClick(object sender, RoutedEventArgs e)
         {
-            string res = password.ChangePassword();
-            MessageBox.Show(res);
+            KeyValuePair<bool, string> res = ChangePassword();
+            if (res.Key)
+            {
+                changeStatus.Content = res.Value;
+                Task task;
+                task = new Task(() =>
+                {
+                    try
+                    {
+                        for (int i = 0; i < 10; i++)
+                        {
+                            i++;
+                            Thread.Sleep(1000);
+                        }
+                        Dispatcher.Invoke(() => changeStatus.Content = string.Empty);
+                        
+                    }
+                    catch { }
+                });
+                task.Start();
+            }
+            else
+            {
+                MessageBox.Show(res.Value);
+            }
+        }
+
+
+        public KeyValuePair<bool, string> ChangePassword()
+        {
+            string enPass = Convert.ToBase64String(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(oldPass.Password)));
+            string setPass = Settings.Default.PASSWORD_HASH;
+            if (enPass == setPass)
+            {
+                if (newPass.Password == repeatPass.Password)
+                {
+                    Settings.Default.PASSWORD_HASH = Convert.ToBase64String(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(repeatPass.Password)));
+                    Settings.Default.Save();
+                    return new KeyValuePair<bool, string>(true, "Пароль успешно изменен");
+                }
+                else
+                {
+                    return new KeyValuePair<bool, string>(false, "Пароли не совпадают");
+                }
+            }
+            else
+            {
+                return new KeyValuePair<bool, string>(false, "Неверный пароль");
+            }
         }
     }
 }

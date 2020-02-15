@@ -16,7 +16,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid>
-                        <Border CornerRadius="5" BorderThickness="1" Name="btnDarkBorder">
+                        <Border CornerRadius="5" BorderThickness="1" Name="btnDarkBorder" Padding="{TemplateBinding Padding}">
                             <Border.BorderBrush>
                                 <SolidColorBrush Color="{DynamicResource darkBorder}"/>
                             </Border.BorderBrush>

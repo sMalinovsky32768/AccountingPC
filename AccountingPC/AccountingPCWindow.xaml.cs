@@ -39,7 +39,7 @@ namespace AccountingPC
 
         private void ExitApp(object sender, RoutedEventArgs e)
         {
-            Close();
+            App.Current.Shutdown();
         }
     }
 }
