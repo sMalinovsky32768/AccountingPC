@@ -6,26 +6,7 @@
         xmlns:local="clr-namespace:AccountingPC"
         mc:Ignorable="d"
         Title="Параметры" Height="450" Width="800" Topmost="True" ResizeMode="NoResize" 
-        WindowStartupLocation="CenterScreen" Closed="ParameterClosed">
-    <!--<Window.Resources>
-        <Style TargetType="Frame">
-            <Setter Property="ContentTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <DataTemplate.Triggers>
-                            <DataTrigger Binding="{Binding SelectedIndex, ElementName=list}" Value="2">
-                                <Setter Property="Frame.Source">
-                                    <Setter.Value>
-                                        
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                        </DataTemplate.Triggers>
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>-->
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -48,8 +29,8 @@
             <Frame x:Name="frameSettings" Grid.Column="2" Source="/AccountingPC;component/ParametersPages/ParametersBasicPage.xaml" NavigationUIVisibility="Hidden"/>
         </Grid>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Отмена" Style="{DynamicResource btn-dark}" Padding="20 5" Margin="5" IsCancel="True" Click="CancelClick"/>
-            <Button Content="ОК" Style="{DynamicResource btn-dark}" Padding="20 5" Margin="5" IsDefault="True" Click="SaveSettings"/>
+            <Button Content="Отмена" Style="{DynamicResource btn-dark}" Padding="20 5" Margin="5" IsCancel="True" Click="ButtonClick"/>
+            <Button Content="ОК" Style="{DynamicResource btn-dark}" Padding="20 5" Margin="5" IsDefault="True" Click="ButtonClick"/>
         </StackPanel>
     </Grid>
 </Window>

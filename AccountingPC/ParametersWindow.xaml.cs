@@ -20,7 +20,6 @@ namespace AccountingPC
     /// </summary>
     public partial class ParametersWindow : Window
     {
-        private bool isCancel;
         public ParametersWindow()
         {
             InitializeComponent();
@@ -47,24 +46,11 @@ namespace AccountingPC
             }
         }
 
-        private void SaveSettings(object sender, RoutedEventArgs e)
+        private void ButtonClick(object sender, RoutedEventArgs e)
         {
-            isCancel = false;
-            Close();
-        }
-
-        private void CancelClick(object sender, RoutedEventArgs e)
-        {
-            isCancel = true;
-            Close();
-        }
-
-        private void ParameterClosed(object sender, EventArgs e)
-        {
-            if (!isCancel)
-            {
+            if (((Button)sender).IsDefault)
                 Settings.Default.Save();
-            }
+            Close();
         }
     }
 }

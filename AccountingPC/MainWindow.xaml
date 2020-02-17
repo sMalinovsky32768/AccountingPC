@@ -23,21 +23,15 @@
             <Setter Property="TextBlock.Margin" Value="10,20,10,5"/>
             <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
             <Setter Property="TextBlock.FontFamily" Value="Source Sans Pro"/>
+            <Setter Property="TextBlock.Foreground" Value="{DynamicResource gray-200-brush}"/>
         </Style>
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:MainWindow.ExitCommand}" Executed="CancelClick"/>
         <!--Выход при Esc-->
     </Window.CommandBindings>
-    <Border RenderTransformOrigin="0.5,0.5" Height="{Binding ActualHeight, ElementName=window, Mode=OneWay}" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown">
-        <Border.Background>
-            <LinearGradientBrush StartPoint="0,-2" EndPoint="0,2">
-                <LinearGradientBrush.GradientStops>
-                    <GradientStop Color="{DynamicResource darkBackground}" Offset="-1"/>
-                    <GradientStop Color="{DynamicResource lightBackground}" Offset="1"/>
-                </LinearGradientBrush.GradientStops>
-            </LinearGradientBrush>
-        </Border.Background>
+    <Border RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="Border_MouseLeftButtonDown" BorderThickness="0" 
+            BorderBrush="{DynamicResource gray-900-brush}" Background="{DynamicResource gray-900-brush}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
