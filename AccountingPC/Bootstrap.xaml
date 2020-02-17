@@ -43,6 +43,32 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="controlButton">
+        <Setter Property="Button.Padding" Value="5 1 5 1"/>
+        <Setter Property="Button.Margin" Value="1 0 0 0"/>
+        <Setter Property="Button.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border Name="btnDarkBorder" Background="{DynamicResource gray-800-brush}"
+                                Padding="{TemplateBinding Padding}"  Margin="{TemplateBinding Margin}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                              TextElement.FontWeight="Bold" Name="btnDarkContent" 
+                                              TextElement.Foreground="{DynamicResource gray-200-brush}">
+                            </ContentPresenter>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="btnDarkBorder" Property="BorderBrush" Value="{DynamicResource gray-900-brush}"/>
+                            <Setter TargetName="btnDarkBorder" Property="Background" Value="{DynamicResource gray-900-brush}"/>
+                            <Setter TargetName="btnDarkContent" Property="TextElement.Foreground" Value="{DynamicResource gray-100-brush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style x:Key="text-box">
         <Setter Property="TextBox.Foreground" Value="{DynamicResource gray-200-brush}"/>
         <Setter Property="TextBox.Template">
@@ -435,19 +461,6 @@
         <Setter Property="FontWeight" Value="Medium"/>
         <Setter Property="FontSize" Value="14"/>
     </Style>
-   <!-- <Style TargetType="Grid">
-        <Setter Property="Background" Value="#c6c8ca"/>
-    </Style>-->
-    <!--<Style TargetType="TextBox">
-        <Setter Property="Margin" Value="10"/>
-        <Setter Property="Padding" Value="5"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-    </Style>
-    <Style TargetType="PasswordBox">
-        <Setter Property="Margin" Value="10"/>
-        <Setter Property="Padding" Value="5"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-    </Style>-->
 
 
     <!--Кнопки в DataGridHeader

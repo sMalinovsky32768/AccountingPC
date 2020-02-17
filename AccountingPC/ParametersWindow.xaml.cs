@@ -20,6 +20,10 @@ namespace AccountingPC
     /// </summary>
     public partial class ParametersWindow : Window
     {
+        public static readonly RoutedCommand ExitCommand = new RoutedUICommand(
+            "Exit", "ExitCommand", typeof(AccountingPCWindow),
+            new InputGestureCollection(new InputGesture[] { new KeyGesture(Key.F4, ModifierKeys.Alt) }));
+
         public ParametersWindow()
         {
             InitializeComponent();
@@ -50,6 +54,16 @@ namespace AccountingPC
         {
             if (((Button)sender).IsDefault)
                 Settings.Default.Save();
+            Close();
+        }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();// Для перемещение ока
+        }
+
+        private void ExitApp(object sender, RoutedEventArgs e)
+        {
             Close();
         }
     }

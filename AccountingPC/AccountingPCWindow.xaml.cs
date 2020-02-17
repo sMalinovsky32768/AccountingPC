@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccountingPC.Properties;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -49,12 +50,24 @@ namespace AccountingPC
 
         private void ExitApp(object sender, RoutedEventArgs e)
         {
-            App.Current.Shutdown();
+            if (e.OriginalSource.GetType() == typeof(MenuItem))
+                if (((MenuItem)e.OriginalSource).Name == "menuExit")
+                    if (Settings.Default.SHUTDOWN_ON_EXPLICIT)
+                        App.Current.Shutdown();
+                    else
+                        Close();
+                else { }
+            else if (e.OriginalSource.GetType() == typeof(Button))
+                if (((Button)e.OriginalSource).Name == "buttonExit")
+                    Close();
+                else { }
+            else
+                Close();
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();// Для перемещение ока
+            DragMove();// Для перемещение ока
         }
 
         private void MazimazeApp(object sender, ExecutedRoutedEventArgs e)

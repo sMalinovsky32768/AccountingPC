@@ -8,32 +8,7 @@
         Title="AccountingPC" Height="768" Width="1366" MinWidth="800" MinHeight="450" 
         WindowStartupLocation="CenterScreen" Icon="images/icon.ico" WindowStyle="None" Loaded="window_Loaded" Closed="window_Closed">
     <Window.Resources>
-        <Style x:Key="controlButton">
-            <Setter Property="Button.Padding" Value="5 1 5 1"/>
-            <Setter Property="Button.Margin" Value="1 0 0 0"/>
-            <Setter Property="Button.Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Grid>
-                            <Border Name="btnDarkBorder" Background="{DynamicResource gray-800-brush}"
-                                Padding="{TemplateBinding Padding}"  Margin="{TemplateBinding Margin}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                              TextElement.FontWeight="Bold" Name="btnDarkContent" 
-                                              TextElement.Foreground="{DynamicResource gray-200-brush}">
-                                </ContentPresenter>
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="btnDarkBorder" Property="BorderBrush" Value="{DynamicResource gray-900-brush}"/>
-                                <Setter TargetName="btnDarkBorder" Property="Background" Value="{DynamicResource gray-900-brush}"/>
-                                <Setter TargetName="btnDarkContent" Property="TextElement.Foreground" Value="{DynamicResource gray-100-brush}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:AccountingPCWindow.ParametersCommand}" Executed="OpenParameters"/>
@@ -50,6 +25,7 @@
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
@@ -57,18 +33,11 @@
                     <MenuItem Header="Файл">
                         <MenuItem Header="Параметры" InputGestureText="F12" Command="{x:Static local:AccountingPCWindow.ParametersCommand}"/>
                         <Separator/>
-                        <MenuItem Header="Выход" InputGestureText="Alt+F4" Command="{x:Static local:AccountingPCWindow.ExitCommand}"/>
+                        <MenuItem x:Name="menuExit" Header="Выход" InputGestureText="Alt+F4" Command="{x:Static local:AccountingPCWindow.ExitCommand}"/>
                     </MenuItem>
                 </Menu>
-                <StackPanel Grid.Column="1" Orientation="Horizontal">
-                    <StackPanel.Background>
-                        <LinearGradientBrush StartPoint="0,-2" EndPoint="0,2">
-                            <LinearGradientBrush.GradientStops>
-                                <GradientStop Color="{DynamicResource gray-800}" Offset="-1"/>
-                                <GradientStop Color="{DynamicResource gray-800}" Offset="1"/>
-                            </LinearGradientBrush.GradientStops>
-                        </LinearGradientBrush>
-                    </StackPanel.Background>
+                <StackPanel Grid.Column="1" Background="{DynamicResource gray-800-brush}"/>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Background="{DynamicResource gray-800-brush}">
                     <Button x:Name="buttonMinimazed" Height="20" Style="{DynamicResource controlButton}" 
                             Command="{x:Static local:AccountingPCWindow.MinimazedCommand}">
                         <Image Source="images/minimaze.png"/>
@@ -92,7 +61,7 @@
                 <Grid>
                     <!--Selecting a category Grid-->
                 </Grid>
-                <GridSplitter Grid.Column="1" Width="2" ResizeBehavior="PreviousAndNext"/>
+                <GridSplitter Grid.Column="1" Width="1" ResizeBehavior="PreviousAndNext"/>
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
@@ -118,7 +87,7 @@
                             </DataGrid.Items>
                         </DataGrid>
                     </Grid>
-                    <GridSplitter Grid.Row="2" Height="2" ResizeBehavior="PreviousAndNext"/>
+                    <GridSplitter Grid.Row="2" Height="1" ResizeBehavior="PreviousAndNext"/>
                     <Grid Grid.Row="3">
                         <!--Information Device Grid-->
 
