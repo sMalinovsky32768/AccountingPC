@@ -48,6 +48,12 @@ namespace AccountingPC
             new ParametersWindow().ShowDialog();
         }
 
+        /// <summary>
+        /// Если метод был вызван кнопкой в верхнем правом углу, то, если задан SHUTDOWN_ON_EXPLICIT, то происходит завершение программы.
+        /// В остальных случаях просто закрывается окно.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitApp(object sender, RoutedEventArgs e)
         {
             if (e.OriginalSource.GetType() == typeof(MenuItem))

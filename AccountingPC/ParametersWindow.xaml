@@ -10,7 +10,7 @@
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:AccountingPCWindow.ExitCommand}" Executed="ExitApp"/>
     </Window.CommandBindings>
-    <Border RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="Border_MouseLeftButtonDown" BorderThickness="0" 
+    <Border RenderTransformOrigin="0.5,0.5" BorderThickness="0" 
             BorderBrush="{DynamicResource gray-900-brush}" Background="{DynamicResource gray-900-brush}">
         <Grid>
             <Grid.RowDefinitions>
@@ -20,12 +20,15 @@
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="{Binding Title, ElementName=window}" 
+                <TextBlock Text="{Binding Title, ElementName=window}" Padding="5 2 0 2"
                            Foreground="{DynamicResource gray-200-brush}" Background="{DynamicResource gray-800-brush}"/>
-                <StackPanel Grid.Column="1" Orientation="Horizontal" Background="{DynamicResource gray-800-brush}">
+                <StackPanel Grid.Column="1" Background="{DynamicResource gray-800-brush}"/>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" MouseLeftButtonDown="Border_MouseLeftButtonDown" 
+                            Background="{DynamicResource gray-800-brush}">
                     <Button x:Name="buttonExit" Height="20" 
                             Style="{DynamicResource controlButton}" Command="{x:Static local:AccountingPCWindow.ExitCommand}">
                         <Image Source="images/close.png"/>

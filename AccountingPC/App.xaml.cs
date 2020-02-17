@@ -70,7 +70,11 @@ namespace AccountingPC
                 new MainWindow().Show();
             }
         }
-
+        /// <summary>
+        /// Устанавливает учетные данные пользоваля.
+        /// </summary>
+        /// <param name="login">Логин</param>
+        /// <param name="pass">Пароль</param>
         private void SetUserCredentials(string login, string pass)
         {
             if (Settings.Default.USER_NAME == null || Settings.Default.USER_NAME == "")
@@ -79,17 +83,24 @@ namespace AccountingPC
                 Settings.Default.PASSWORD_HASH = Convert.ToBase64String(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(pass)));
             Settings.Default.Save();
         }
-
+        /// <summary>
+        /// Устанавливает учетные данные
+        /// </summary>
+        /// <param name="userCredentials">Значение, которое будет установленно и в качестве логина и в качестве пароля</param>
         private void SetUserCredentials(string userCredentials)
         {
             SetUserCredentials(userCredentials, userCredentials);
         }
-
+        /// <summary>
+        /// Устанавливает учетные данные по умолчанию
+        /// </summary>
         private void SetUserCredentials()
         {
             SetUserCredentials("admin");
         }
-
+        /// <summary>
+        /// Создает базу данных
+        /// </summary>
         private void CreateDB()
         {
             string str;

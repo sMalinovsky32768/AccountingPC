@@ -58,7 +58,15 @@ namespace AccountingPC.ParametersPages
             }
         }
 
-
+        /// <summary>
+        /// Метод сравнивает старый пароль с сохраненным. 
+        /// Если пароли равны, то сравнивается новый пароль с его повтором. 
+        /// Если новый пароль совпадает, хешированный пароль сохраняется.
+        /// </summary>
+        /// <returns>Возвращает пару ключ-значение.
+        /// Ключ представляет логическое значение. True - пароль изменен. False - Произошла ошибка.
+        /// Значение представляет сообщение о статусе изменения пароля.
+        /// </returns>
         public KeyValuePair<bool, string> ChangePassword()
         {
             string enPass = Convert.ToBase64String(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(oldPass.Password)));

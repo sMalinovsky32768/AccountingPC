@@ -59,7 +59,7 @@ namespace AccountingPC
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();// Для перемещение ока
+            DragMove();// Для перемещение ока
         }
 
         private void ExitApp(object sender, RoutedEventArgs e)

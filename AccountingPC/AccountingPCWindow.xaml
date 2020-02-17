@@ -1,22 +1,20 @@
-﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Window x:Name="window" x:Class="AccountingPC.AccountingPCWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AccountingPC"
-        xmlns:Data="clr-namespace:System.Data;assembly=System.Data" x:Name="window" x:Class="AccountingPC.AccountingPCWindow"
+        xmlns:Data="clr-namespace:System.Data;assembly=System.Data"
         mc:Ignorable="d"
         Title="AccountingPC" Height="768" Width="1366" MinWidth="800" MinHeight="450" 
         WindowStartupLocation="CenterScreen" Icon="images/icon.ico" WindowStyle="None" Loaded="window_Loaded" Closed="window_Closed">
-    <Window.Resources>
-        
-    </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:AccountingPCWindow.ParametersCommand}" Executed="OpenParameters"/>
         <CommandBinding Command="{x:Static local:AccountingPCWindow.ExitCommand}" Executed="ExitApp"/>
         <CommandBinding Command="{x:Static local:AccountingPCWindow.MaximazedCommand}" Executed="MazimazeApp"/>
         <CommandBinding Command="{x:Static local:AccountingPCWindow.MinimazedCommand}" Executed="MinimazeApp"/>
     </Window.CommandBindings>
-    <Border RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="Border_MouseLeftButtonDown" BorderThickness="0" 
+    <Border RenderTransformOrigin="0.5,0.5" BorderThickness="0" 
             BorderBrush="{DynamicResource gray-900-brush}" Background="{DynamicResource gray-900-brush}">
         <Grid>
             <Grid.RowDefinitions>
@@ -36,7 +34,8 @@
                         <MenuItem x:Name="menuExit" Header="Выход" InputGestureText="Alt+F4" Command="{x:Static local:AccountingPCWindow.ExitCommand}"/>
                     </MenuItem>
                 </Menu>
-                <StackPanel Grid.Column="1" Background="{DynamicResource gray-800-brush}"/>
+                <StackPanel Grid.Column="1" MouseLeftButtonDown="Border_MouseLeftButtonDown" 
+                            Background="{DynamicResource gray-800-brush}"/>
                 <StackPanel Grid.Column="2" Orientation="Horizontal" Background="{DynamicResource gray-800-brush}">
                     <Button x:Name="buttonMinimazed" Height="20" Style="{DynamicResource controlButton}" 
                             Command="{x:Static local:AccountingPCWindow.MinimazedCommand}">
