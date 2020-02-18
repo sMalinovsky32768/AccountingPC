@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:AccountingPC"
         xmlns:Data="clr-namespace:System.Data;assembly=System.Data"
         mc:Ignorable="d"
-        Title="AccountingPC" Height="768" Width="1366" MinWidth="800" MinHeight="450" 
-        WindowStartupLocation="CenterScreen" Icon="images/icon.ico" WindowStyle="None" Loaded="window_Loaded" Closed="window_Closed">
+        Title="AccountingPC" Height="768" Width="1366" MinWidth="800" MinHeight="450"  Style="{DynamicResource window}"
+        WindowStartupLocation="CenterScreen" Icon="images/icon.ico" WindowStyle="None" Loaded="Window_Loaded" Closed="Window_Closed">
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:AccountingPCWindow.ParametersCommand}" Executed="OpenParameters"/>
         <CommandBinding Command="{x:Static local:AccountingPCWindow.ExitCommand}" Executed="ExitApp"/>

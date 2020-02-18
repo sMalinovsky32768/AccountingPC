@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AccountingPC.Styles">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Color.xaml"/>
+        <ResourceDictionary Source="DataGridStyle.xaml"/>
+        <ResourceDictionary Source="ButtonStyle.xaml"/>
+        <ResourceDictionary Source="CommonStyle.xaml"/>
+        <ResourceDictionary Source="MenuStyle.xaml"/>
+        <ResourceDictionary Source="TextStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

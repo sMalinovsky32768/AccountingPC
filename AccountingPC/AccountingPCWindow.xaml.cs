@@ -94,7 +94,7 @@ namespace AccountingPC
             }
         }
 
-        private void window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Height = AccountingPCWindowSettings.Default.Height > MinHeight ? AccountingPCWindowSettings.Default.Height : MinHeight;
             Width = AccountingPCWindowSettings.Default.Width > MinWidth ? AccountingPCWindowSettings.Default.Width : MinWidth;
@@ -119,7 +119,7 @@ namespace AccountingPC
             }
         }
 
-        private void window_Closed(object sender, EventArgs e)
+        private void Window_Closed(object sender, EventArgs e)
         {
             AccountingPCWindowSettings.Default.WindowState = Enum.GetName(typeof(WindowState), WindowState);
             AccountingPCWindowSettings.Default.Width = Width;

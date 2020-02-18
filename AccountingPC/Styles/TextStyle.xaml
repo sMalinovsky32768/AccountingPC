@@ -1,0 +1,51 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AccountingPC.Styles">
+    <Style x:Key="text-box">
+        <Setter Property="TextBox.Foreground" Value="{DynamicResource gray-200-brush}"/>
+        <Setter Property="TextBox.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Grid>
+                        <Border CornerRadius="5" BorderThickness="1" x:Name="border"
+                                BorderBrush="{DynamicResource gray-800-brush}" 
+                                Background="{DynamicResource gray-700-brush}">
+                            <!--Для отображения введенного текста-->
+                            <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource blue-gray-500-brush}"/>
+                            <Setter TargetName="border" Property="BorderThickness" Value="2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="password-box">
+        <Setter Property="PasswordBox.Foreground" Value="{DynamicResource gray-200-brush}"/>
+        <Setter Property="PasswordBox.Margin" Value="10"/>
+        <Setter Property="PasswordBox.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="PasswordBox">
+                    <Grid>
+                        <Border CornerRadius="5" BorderThickness="1" x:Name="border"
+                                BorderBrush="{DynamicResource gray-800-brush}" 
+                                Background="{DynamicResource gray-700-brush}">
+                            <!--Для отображения введенного текста-->
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource blue-gray-500-brush}"/>
+                            <Setter TargetName="border" Property="BorderThickness" Value="2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
