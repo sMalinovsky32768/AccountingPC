@@ -41,6 +41,7 @@ namespace AccountingPC
                     break;
                 case "Стили":
                     frameSettings.Source = new Uri("ParametersPages/ParametersStylesPage.xaml", UriKind.RelativeOrAbsolute);
+                    // frameSettings.Source = new Uri("Maps/MapDefault.xaml", UriKind.RelativeOrAbsolute);
                     break;
                 case "Безопасность":
                     frameSettings.Source = new Uri("ParametersPages/ParametersSecurityPage.xaml", UriKind.RelativeOrAbsolute);

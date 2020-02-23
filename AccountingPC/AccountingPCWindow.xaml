@@ -39,15 +39,15 @@
                 <StackPanel Grid.Column="2" Orientation="Horizontal" Background="{DynamicResource gray-800-brush}">
                     <Button x:Name="buttonMinimazed" Height="20" Style="{DynamicResource controlButton}" 
                             Command="{x:Static local:AccountingPCWindow.MinimazedCommand}">
-                        <Image Source="images/minimaze.png"/>
+                        <Image Source="images/window-minimize.png"/>
                     </Button>
                     <Button x:Name="buttonMaximazed" Height="20" Style="{DynamicResource controlButton}" 
                             Command="{x:Static local:AccountingPCWindow.MaximazedCommand}">
-                        <Image Source="images/maximazed.png" x:Name="maximazeButtonImage" Stretch="None"/>
+                        <Image Source="images/window-restore.png" x:Name="maximazeButtonImage" Stretch="Fill"/>
                     </Button>
                     <Button x:Name="buttonExit" Height="20" 
                             Style="{DynamicResource controlButton}" Command="{x:Static local:AccountingPCWindow.ExitCommand}">
-                        <Image Source="images/close.png"/>
+                        <Image Source="images/window-close.png"/>
                     </Button>
                 </StackPanel>
             </Grid>
@@ -59,22 +59,56 @@
                 </Grid.ColumnDefinitions>
                 <Grid>
                     <!--Selecting a category Grid-->
+                    <ListBox x:Name="list" SelectionChanged="ListBox_SelectionChanged">
+                        <ListBoxItem Content="Компьютеры"/>
+                        <ListBoxItem Content="Ноутбук"/>
+                    </ListBox>
                 </Grid>
                 <GridSplitter Grid.Column="1" Width="1" ResizeBehavior="PreviousAndNext"/>
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
+                        <RowDefinition MinHeight="50" Height="auto"/>
                         <RowDefinition Height="3*"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition MaxHeight="300"/>
                     </Grid.RowDefinitions>
                     <Grid>
                         <!--Information Category Grid-->
-
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid></Grid>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="Button" BasedOn="{StaticResource btn-dark}">
+                                        <Setter Property="Padding" Value="10 5"/>
+                                        <Setter Property="Margin" Value="5"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SelectedIndex, ElementName=list}" Value="-1">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Resources>
+                                <Button Content="Добавить"/>
+                                <Button Grid.Column="1" Content="Изменить"/>
+                                <Button Grid.Column="1" Grid.Row="1" Content="Удалить"/>
+                            </Grid>
+                        </Grid>
                     </Grid>
                     <Grid Grid.Row="1">
-                        <DataGrid x:Name="view">
-                            <!--="{Binding Mode=OneWay, Source={StaticResource table-dark}}">-->
+                        <DataGrid x:Name="view" SelectionMode="Single" IsReadOnly="True">
+                            <!--
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Инвентарный номер" Binding="{Binding Path=Inventory}"/>
                                 <DataGridTextColumn Header="Название" Binding="{Binding Path=Name}"/>
@@ -83,7 +117,7 @@
                                 <local:PC Inventory="1234" Name="qwerty"/>
                                 <local:PC Inventory="5678" Name="asdfgh"/>
                                 <local:PC Inventory="9012" Name="zxcvbn"/>
-                            </DataGrid.Items>
+                            </DataGrid.Items>-->
                         </DataGrid>
                     </Grid>
                     <GridSplitter Grid.Row="2" Height="1" ResizeBehavior="PreviousAndNext"/>

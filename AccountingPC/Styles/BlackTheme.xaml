@@ -3,10 +3,11 @@
                     xmlns:local="clr-namespace:AccountingPC.Styles">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Color.xaml"/>
+        <ResourceDictionary Source="CalendarStyle.xaml"/>
         <ResourceDictionary Source="DataGridStyle.xaml"/>
         <ResourceDictionary Source="ButtonStyle.xaml"/>
         <ResourceDictionary Source="CommonStyle.xaml"/>
         <ResourceDictionary Source="MenuStyle.xaml"/>
-        <ResourceDictionary Source="TextStyle.xaml"/>
+        <ResourceDictionary Source="BoxStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

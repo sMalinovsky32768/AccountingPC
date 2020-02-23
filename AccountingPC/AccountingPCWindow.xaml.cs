@@ -1,7 +1,9 @@
 ﻿using AccountingPC.Properties;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +37,8 @@ namespace AccountingPC
         public static readonly RoutedCommand MinimazedCommand = new RoutedUICommand(
             "Minimazed", "MinimazedCommand", typeof(AccountingPCWindow),
             new InputGestureCollection(new InputGesture[] { new KeyGesture(Key.F2, ModifierKeys.Alt) }));
+        SqlDataAdapter adapter;
+        DataSet set;
 
         public AccountingPCWindow()
         {
@@ -83,14 +87,14 @@ namespace AccountingPC
                 WindowState = WindowState.Normal;
                 Height = lastHeight;
                 Width = lastWidth;
-                maximazeButtonImage.Source = new BitmapImage(new Uri("pack://application:,,,/AccountingPC;component/images/maximazed.png"));
+                maximazeButtonImage.Source = new BitmapImage(new Uri("pack://application:,,,/AccountingPC;component/images/window-maximize.png"));
             }
             else if (WindowState == WindowState.Normal)
             {
                 lastHeight = Height;
                 lastWidth = Width;
                 WindowState = WindowState.Maximized;
-                maximazeButtonImage.Source = new BitmapImage(new Uri("pack://application:,,,/AccountingPC;component/images/maximaze.png"));
+                maximazeButtonImage.Source = new BitmapImage(new Uri("pack://application:,,,/AccountingPC;component/images/window-restore.png"));
             }
         }
 
@@ -111,12 +115,13 @@ namespace AccountingPC
             }*/
             if (WindowState == WindowState.Maximized)
             {
-                maximazeButtonImage.Source = new BitmapImage(new Uri("pack://application:,,,/AccountingPC;component/images/maximazed.png"));
+                maximazeButtonImage.Source = new BitmapImage(new Uri("pack://application:,,,/AccountingPC;component/images/window-restore.png"));
             }
             else if (WindowState == WindowState.Normal)
             {
-                maximazeButtonImage.Source = new BitmapImage(new Uri("pack://application:,,,/AccountingPC;component/images/maximaze.png"));
+                maximazeButtonImage.Source = new BitmapImage(new Uri("pack://application:,,,/AccountingPC;component/images/window-maximize.png"));
             }
+            list.SelectedIndex = 0;
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -132,6 +137,23 @@ namespace AccountingPC
         private void MinimazeApp(object sender, ExecutedRoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (((ListBox)sender).SelectedIndex)
+            {
+                case 0:
+                    adapter = new SqlDataAdapter("SELECT PC.InventoryNumber as 'Инвентарный номер', " +
+                        "PC.Name as 'Наименование', " +
+                        "PC.Cost as 'Цена', " +
+                        "(select dbo.getFullProcessorName(PC.CPUID)) as 'Процессор' from PC", 
+                        ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+                    set = new DataSet();
+                    adapter.Fill(set);
+                    view.ItemsSource = set.Tables[0].DefaultView;
+                    break;
+            }
         }
     }
 }

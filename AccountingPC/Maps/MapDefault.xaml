@@ -1,0 +1,70 @@
+﻿<Page x:Name="page" x:Class="AccountingPC.Maps.MapDefault"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AccountingPC.Maps"
+      mc:Ignorable="d" Background="{DynamicResource gray-900-brush}"
+      d:DesignHeight="680" d:DesignWidth="530" Title="MapDefault">
+    <Page.Resources>
+        <Style TargetType="{x:Type Path}">
+            <EventSetter Event="MouseDown" Handler="MouseDownHandler"/>
+        </Style>
+    </Page.Resources>
+    <Viewbox x:Name="viewbox">
+        <Canvas x:Name="map" Width="530" Height="680">
+            <!--Teacher-->
+            <Path x:Name="table_0" Stroke="{DynamicResource gray-400-brush}" StrokeThickness="1" Fill="{DynamicResource gray-800-brush}" Data="M 30 50 h 120 v 70 h -120 z"/>
+            <Path x:Name="monitor_0" Stroke="{DynamicResource blue-gray-200-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-800-brush}" Data="M 60 105 h 50 v 10 h -50 z"/>
+            <Path x:Name="systemUnit_0" Stroke="{DynamicResource blue-gray-200-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-800-brush}" Data="M 5 50 h 20 v 55 h -20 z"/>
+            <!--1-->
+            <Path x:Name="table_1" Stroke="{DynamicResource gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource gray-600-brush}" Data="M 30 150 h 120 v 70 h -120 z"/>
+            <Path x:Name="monitor_1" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 60 155 h 50 v 10 h -50 z"/>
+            <Path x:Name="systemUnit_1" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 5 165 h 20 v 55 h -20 z"/>
+            <!--1-->
+            <Path x:Name="table_2" Stroke="{DynamicResource gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource gray-600-brush}" Data="M 30 280 h 120 v 70 h -120 z"/>
+            <Path x:Name="monitor_2" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 60 285 h 50 v 10 h -50 z"/>
+            <Path x:Name="systemUnit_2" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 5 295 h 20 v 55 h -20 z"/>
+            <!--1-->
+            <Path x:Name="table_3" Stroke="{DynamicResource gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource gray-600-brush}" Data="M 30 410 h 120 v 70 h -120 z"/>
+            <Path x:Name="monitor_3" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 60 415 h 50 v 10 h -50 z"/>
+            <Path x:Name="systemUnit_3" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 5 425 h 20 v 55 h -20 z"/>
+            <!--1-->
+            <Path x:Name="table_4" Stroke="{DynamicResource gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource gray-600-brush}" Data="M 30 540 h 120 v 70 h -120 z"/>
+            <Path x:Name="monitor_4" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 60 545 h 50 v 10 h -50 z"/>
+            <Path x:Name="systemUnit_4" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 5 555 h 20 v 55 h -20 z"/>
+            <!--1-->
+            <Path x:Name="table_5" Stroke="{DynamicResource gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource gray-600-brush}" Data="M 200 150 h 120 v 70 h -120 z"/>
+            <Path x:Name="monitor_5" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 230 155 h 50 v 10 h -50 z"/>
+            <Path x:Name="systemUnit_5" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 325 165 h 20 v 55 h -20 z"/>
+            <!--1-->
+            <Path x:Name="table_6" Stroke="{DynamicResource gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource gray-600-brush}" Data="M 200 280 h 120 v 70 h -120 z"/>
+            <Path x:Name="monitor_6" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 230 285 h 50 v 10 h -50 z"/>
+            <Path x:Name="systemUnit_6" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 325 295 h 20 v 55 h -20 z"/>
+            <!--1-->
+            <Path x:Name="table_7" Stroke="{DynamicResource gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource gray-600-brush}" Data="M 200 410 h 120 v 70 h -120 z"/>
+            <Path x:Name="monitor_7" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 230 415 h 50 v 10 h -50 z"/>
+            <Path x:Name="systemUnit_7" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 325 425 h 20 v 55 h -20 z"/>
+            <!--1-->
+            <Path x:Name="table_8" Stroke="{DynamicResource gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource gray-600-brush}" Data="M 200 540 h 120 v 70 h -120 z"/>
+            <Path x:Name="monitor_8" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 230 545 h 50 v 10 h -50 z"/>
+            <Path x:Name="systemUnit_8" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 325 555 h 20 v 55 h -20 z"/>
+            <!--1-->
+            <Path x:Name="table_9" Stroke="{DynamicResource gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource gray-600-brush}" Data="M 380 150 h 120 v 70 h -120 z"/>
+            <Path x:Name="monitor_9" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 410 155 h 50 v 10 h -50 z"/>
+            <Path x:Name="systemUnit_9" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 505 165 h 20 v 55 h -20 z"/>
+            <!--1-->
+            <Path x:Name="table_10" Stroke="{DynamicResource gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource gray-600-brush}" Data="M 380 280 h 120 v 70 h -120 z"/>
+            <Path x:Name="monitor_10" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 410 285 h 50 v 10 h -50 z"/>
+            <Path x:Name="systemUnit_10" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 505 295 h 20 v 55 h -20 z"/>
+            <!--1-->
+            <Path x:Name="table_11" Stroke="{DynamicResource gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource gray-600-brush}" Data="M 380 410 h 120 v 70 h -120 z"/>
+            <Path x:Name="monitor_11" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 410 415 h 50 v 10 h -50 z"/>
+            <Path x:Name="systemUnit_11" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 505 425 h 20 v 55 h -20 z"/>
+            <!--1-->
+            <Path x:Name="table_12" Stroke="{DynamicResource gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource gray-600-brush}" Data="M 380 540 h 120 v 70 h -120 z"/>
+            <Path x:Name="monitor_12" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 410 545 h 50 v 10 h -50 z"/>
+            <Path x:Name="systemUnit_12" Stroke="{DynamicResource blue-gray-800-brush}" StrokeThickness="1" Fill="{DynamicResource blue-gray-600-brush}" Data="M 505 555 h 20 v 55 h -20 z"/>
+        </Canvas>
+    </Viewbox>
+</Page>

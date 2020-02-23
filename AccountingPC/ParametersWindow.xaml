@@ -26,12 +26,11 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{Binding Title, ElementName=window}" Padding="5 2 0 2"
                            Foreground="{DynamicResource gray-200-brush}" Background="{DynamicResource gray-800-brush}"/>
-                <StackPanel Grid.Column="1" Background="{DynamicResource gray-800-brush}"/>
-                <StackPanel Grid.Column="2" Orientation="Horizontal" MouseLeftButtonDown="Border_MouseLeftButtonDown" 
-                            Background="{DynamicResource gray-800-brush}">
+                <StackPanel Grid.Column="1" Background="{DynamicResource gray-800-brush}" MouseLeftButtonDown="Border_MouseLeftButtonDown"/>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Background="{DynamicResource gray-800-brush}">
                     <Button x:Name="buttonExit" Height="20" 
                             Style="{DynamicResource controlButton}" Command="{x:Static local:AccountingPCWindow.ExitCommand}">
-                        <Image Source="images/close.png"/>
+                        <Image Source="images/window-close.png"/>
                     </Button>
                 </StackPanel>
             </Grid>

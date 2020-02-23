@@ -42,19 +42,15 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <GridSplitter Grid.Column="1" Width="2" ResizeBehavior="PreviousAndNext" ShowsPreview="True" 
-                              Grid.RowSpan="{Binding RowDefinitions.Count, ElementName=grid, Mode=OneWay}">
-                    <GridSplitter.Background>
-                        <SolidColorBrush Color="{DynamicResource lightBackground}"/>
-                    </GridSplitter.Background>
-                </GridSplitter>
+                              Grid.RowSpan="{Binding RowDefinitions.Count, ElementName=grid, Mode=OneWay}"/>
                 <TextBlock Text="Параметр" Style="{Binding Mode=OneWay, Source={StaticResource header}}"/>
                 <TextBlock Grid.Column="2" Text="Значение" Style="{Binding Mode=OneWay, Source={StaticResource header}}"/>
-                <TextBlock Text="Старый пароль" Grid.Row="1"/>
-                <PasswordBox x:Name="oldPass" Grid.Row="1" Grid.Column="2"/>
-                <TextBlock Text="Новый пароль" Grid.Row="2"/>
-                <PasswordBox x:Name="newPass" Grid.Row="2" Grid.Column="2"/>
-                <TextBlock Text="Повторите пароль" Grid.Row="3"/>
-                <PasswordBox x:Name="repeatPass" Grid.Row="3" Grid.Column="2"/>
+                <TextBlock Text="Старый пароль" Grid.Row="1" Style="{DynamicResource property-name}"/>
+                <PasswordBox x:Name="oldPass" Grid.Row="1" Grid.Column="2" Style="{DynamicResource password-box-param}"/>
+                <TextBlock Text="Новый пароль" Grid.Row="2" Style="{DynamicResource property-name}"/>
+                <PasswordBox x:Name="newPass" Grid.Row="2" Grid.Column="2" Style="{DynamicResource password-box-param}"/>
+                <TextBlock Text="Повторите пароль" Grid.Row="3" Style="{DynamicResource property-name}"/>
+                <PasswordBox x:Name="repeatPass" Grid.Row="3" Grid.Column="2" Style="{DynamicResource password-box-param}"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>

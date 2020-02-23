@@ -60,6 +60,7 @@
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -86,6 +87,17 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>AccountingPCWindowSettings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Maps\CreateMapDefault.cs" />
+    <Compile Include="Maps\MapDefault.xaml.cs">
+      <DependentUpon>MapDefault.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\Place.cs" />
+    <Compile Include="Maps\ViewMaps.xaml.cs">
+      <DependentUpon>ViewMaps.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\ViewPlaceInfo.xaml.cs">
+      <DependentUpon>ViewPlaceInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PC.cs" />
     <Page Include="AccountingPCWindow.xaml">
       <SubType>Designer</SubType>
@@ -106,6 +118,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Maps\MapDefault.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Maps\ViewMaps.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Maps\ViewPlaceInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ParametersPages\PageStyleDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -134,6 +158,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\CalendarStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Color.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,7 +178,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\TextStyle.xaml">
+    <Page Include="Styles\BoxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,13 +239,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\close.png" />
+    <Resource Include="images\window-close.png" />
+    <Resource Include="images\window-maximize.png" />
+    <Resource Include="images\window-minimize.png" />
+    <Resource Include="images\window-restore.png" />
     <Content Include="images\icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="images\maximazed.png" />
-    <Resource Include="images\maximaze.png" />
-    <Resource Include="images\minimaze.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,8 +18,8 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="btnDarkBorder" Property="BorderBrush" Value="{DynamicResource gray-900-brush}"/>
-                            <Setter TargetName="btnDarkBorder" Property="Background" Value="{DynamicResource gray-900-brush}"/>
+                            <Setter TargetName="btnDarkBorder" Property="BorderBrush" Value="{DynamicResource blue-gray-500-brush}"/>
+                            <Setter TargetName="btnDarkBorder" Property="Background" Value="{DynamicResource gray-800-brush}"/>
                             <Setter TargetName="btnDarkContent" Property="TextElement.Foreground" Value="{DynamicResource gray-100-brush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>

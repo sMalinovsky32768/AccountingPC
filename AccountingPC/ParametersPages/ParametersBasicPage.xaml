@@ -48,14 +48,10 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <GridSplitter Grid.Column="1" Width="2" ResizeBehavior="PreviousAndNext" ShowsPreview="True" 
-                              Grid.RowSpan="{Binding RowDefinitions.Count, ElementName=grid, Mode=OneWay}">
-                    <GridSplitter.Background>
-                        <SolidColorBrush Color="{DynamicResource lightBackground}"/>
-                    </GridSplitter.Background>
-                </GridSplitter>
+                              Grid.RowSpan="{Binding RowDefinitions.Count, ElementName=grid, Mode=OneWay}"/>
                 <TextBlock Text="Параметр" Style="{Binding Mode=OneWay, Source={StaticResource header}}"/>
                 <TextBlock Grid.Column="2" Text="Значение" Style="{Binding Mode=OneWay, Source={StaticResource header}}"/>
-                <TextBlock Text="Разрешить работу в фоновом режиме" Grid.Row="1"/>
+                <TextBlock Text="Разрешить работу в фоновом режиме" Grid.Row="1" Style="{DynamicResource property-name}"/>
                 <ComboBox x:Name="isOnExplicitShutdown" Grid.Row="1" Grid.Column="2" SelectionChanged="isOnExplicitShutdown_SelectionChanged">
                     <ComboBoxItem Content="Да"/>
                     <ComboBoxItem Content="Нет"/>
