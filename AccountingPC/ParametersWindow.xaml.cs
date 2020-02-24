@@ -21,7 +21,7 @@ namespace AccountingPC
     public partial class ParametersWindow : Window
     {
         public static readonly RoutedCommand ExitCommand = new RoutedUICommand(
-            "Exit", "ExitCommand", typeof(AccountingPCWindow),
+            "Exit", "ExitCommand", typeof(ParametersWindow),
             new InputGestureCollection(new InputGesture[] { new KeyGesture(Key.F4, ModifierKeys.Alt) }));
 
         public ParametersWindow()

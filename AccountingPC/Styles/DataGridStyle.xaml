@@ -76,6 +76,8 @@
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
+        <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource gray-400-brush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
@@ -250,7 +252,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[0].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-500}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-700}"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
@@ -265,7 +267,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[0].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-500}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-600}"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).

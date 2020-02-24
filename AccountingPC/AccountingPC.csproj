@@ -87,6 +87,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>AccountingPCWindowSettings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ChangeDeviceWindow.xaml.cs">
+      <DependentUpon>ChangeDeviceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Devices.cs" />
     <Compile Include="Maps\CreateMapDefault.cs" />
     <Compile Include="Maps\MapDefault.xaml.cs">
       <DependentUpon>MapDefault.xaml</DependentUpon>
@@ -98,8 +102,12 @@
     <Compile Include="Maps\ViewPlaceInfo.xaml.cs">
       <DependentUpon>ViewPlaceInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PC.cs" />
+    <Compile Include="TypeDevice.cs" />
     <Page Include="AccountingPCWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeDeviceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

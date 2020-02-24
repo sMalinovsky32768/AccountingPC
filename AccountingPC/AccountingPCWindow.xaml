@@ -90,7 +90,7 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.Resources>
-                                    <Style TargetType="Button" BasedOn="{StaticResource btn-dark}">
+                                    <Style TargetType="Button" x:Key="btn-view" BasedOn="{StaticResource btn-dark}">
                                         <Setter Property="Padding" Value="10 5"/>
                                         <Setter Property="Margin" Value="5"/>
                                         <Style.Triggers>
@@ -99,15 +99,24 @@
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
+                                    <Style TargetType="Button" x:Key="btn-edit" BasedOn="{StaticResource btn-view}">
+                                        <Setter Property="Padding" Value="10 5"/>
+                                        <Setter Property="Margin" Value="5"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SelectedIndex, ElementName=view}" Value="-1">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
                                 </Grid.Resources>
-                                <Button Content="Добавить"/>
-                                <Button Grid.Column="1" Content="Изменить"/>
-                                <Button Grid.Column="1" Grid.Row="1" Content="Удалить"/>
+                                <Button Content="Добавить" Click="AddDevice" Style="{DynamicResource btn-view}"/>
+                                <Button Grid.Column="1" Content="Изменить" Click="ChangeDevice" Style="{DynamicResource btn-edit}"/>
+                                <Button Grid.Column="1" Grid.Row="1" Content="Удалить" Click="DeleteDevice" Style="{DynamicResource btn-edit}"/>
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="1">
-                        <DataGrid x:Name="view" SelectionMode="Single" IsReadOnly="True">
+                        <DataGrid x:Name="view" IsReadOnly="True" SelectionMode="Single">
                             <!--
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Инвентарный номер" Binding="{Binding Path=Inventory}"/>

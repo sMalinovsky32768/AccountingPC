@@ -8,7 +8,7 @@
         Title="Параметры" Height="450" Width="800" Topmost="True" ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Window.CommandBindings>
-        <CommandBinding Command="{x:Static local:AccountingPCWindow.ExitCommand}" Executed="ExitApp"/>
+        <CommandBinding Command="{x:Static local:ParametersWindow.ExitCommand}" Executed="ExitApp"/>
     </Window.CommandBindings>
     <Border RenderTransformOrigin="0.5,0.5" BorderThickness="0" 
             BorderBrush="{DynamicResource gray-900-brush}" Background="{DynamicResource gray-900-brush}">

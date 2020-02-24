@@ -141,17 +141,60 @@ namespace AccountingPC
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch (((ListBox)sender).SelectedIndex)
+            UpdateDataGrid();
+        }
+
+        private void AddDevice(object sender, RoutedEventArgs e)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+            }
+            UpdateDataGrid();
+        }
+
+        private void ChangeDevice(object sender, RoutedEventArgs e)
+        {
+            DataRow row = ((DataRowView)view.SelectedItem).Row;
+            int id = Convert.ToInt32(row[0]);
+            new ChangeDeviceWindow(TypeDevice.PC, id).ShowDialog();
+            UpdateDataGrid();
+        }
+
+        private void DeleteDevice(object sender, RoutedEventArgs e)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                foreach (object obj in view.SelectedItems)
+                {
+                    DataRow row = ((DataRowView)obj).Row;
+                    int id = Convert.ToInt32(row[0]);
+                    SqlCommand command = new SqlCommand($"Delete from PC where ID={id}", connection);
+                    int res = command.ExecuteNonQuery();
+                }
+            }
+            UpdateDataGrid();
+        }
+
+        private void UpdateDataGrid()
+        {
+            switch (list.SelectedIndex)
             {
                 case 0:
-                    adapter = new SqlDataAdapter("SELECT PC.InventoryNumber as 'Инвентарный номер', " +
-                        "PC.Name as 'Наименование', " +
-                        "PC.Cost as 'Цена', " +
-                        "(select dbo.getFullProcessorName(PC.CPUID)) as 'Процессор' from PC", 
+                    adapter = new SqlDataAdapter("SELECT PC.ID as 'ID', PC.InventoryNumber as 'Инвентарный номер', " +
+                        "PC.Name as 'Наименование', str(PC.Cost, 10, 2) + N' ₽' as 'Цена', " +
+                        "(select dbo.getSocketNameByID(SocketID)) as 'Сокет', " +
+                        "(select dbo.getFullProcessorName(PC.CPUID)) as 'Процессор', " +
+                        "str(PC.RAM, 3, 0) + N' ГБ' as 'ОЗУ', VideoCard as 'Видеокарта', " +
+                        "str(PC.HDDCapacityTB, 4, 1) + N' ТБ' as 'Объем HDD' from PC",
                         ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
                     set = new DataSet();
                     adapter.Fill(set);
                     view.ItemsSource = set.Tables[0].DefaultView;
+                    view.Columns[0].Visibility = Visibility.Collapsed;
                     break;
             }
         }
