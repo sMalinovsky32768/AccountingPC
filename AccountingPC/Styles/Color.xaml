@@ -1,6 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AccountingPC.Styles">
+    <Color x:Key="sky-300">#71AAEB</Color>
+    <Color x:Key="blue-300">#528bcc</Color>
+    <SolidColorBrush x:Key="sky-300-brush" Color="{DynamicResource sky-300}"/>
+    <SolidColorBrush x:Key="blue-300-brush" Color="{DynamicResource blue-300}"/>
+
     <!--Gray Color-->
     <Color x:Key="gray-50">#fafafa</Color>
     <Color x:Key="gray-100">#f5f5f5</Color>

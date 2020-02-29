@@ -5,27 +5,27 @@
         <ResourceDictionary Source="/AccountingPC;component/Styles/BlackTheme.xaml"/>
     </ResourceDictionary.MergedDictionaries>-->
     <Style x:Key="header">
-        <Setter Property="TextBlock.Foreground" Value="{DynamicResource gray-200-brush}"/>
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource box-foreground-brush}"/>
         <Setter Property="TextBlock.FontWeight" Value="Bold"/>
         <Setter Property="TextBlock.Padding" Value="10 8"/>
         <Setter Property="TextBlock.Background">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Color="{DynamicResource gray-400}" Offset="-1"/>
-                    <GradientStop Color="{DynamicResource gray-700}" Offset="1"/>
+                    <GradientStop Color="{DynamicResource alter-background}" Offset="-1"/>
+                    <GradientStop Color="{DynamicResource box-background}" Offset="1"/>
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
     </Style>
     <Style x:Key="property-name" TargetType="TextBlock">
-        <Setter Property="TextBlock.Foreground" Value="{DynamicResource gray-100-brush}"/>
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource foreground-brush}"/>
         <Setter Property="TextBlock.FontWeight" Value="Medium"/>
         <Setter Property="Padding" Value="10 5"/>
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                    <GradientStop Color="{DynamicResource gray-700}" Offset="-5"/>
-                    <GradientStop Color="{DynamicResource gray-400}" Offset="1"/>
+                    <GradientStop Color="{DynamicResource box-background}" Offset="-5"/>
+                    <GradientStop Color="{DynamicResource alter-background}" Offset="1"/>
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -33,21 +33,21 @@
     <Style x:Key="text-box-param" BasedOn="{DynamicResource text-box}">
         <Setter Property="TextBox.Margin" Value="0"/>
         <Setter Property="TextBox.Padding" Value="10 5"/>
-        <Setter Property="TextBox.Foreground" Value="{DynamicResource gray-200-brush}"/>
+        <Setter Property="TextBox.Foreground" Value="{DynamicResource box-foreground-brush}"/>
         <Setter Property="TextBox.Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
                     <Grid>
                         <Border BorderThickness="0 0 0 1" x:Name="border"
-                                BorderBrush="{DynamicResource gray-800-brush}" 
-                                Background="{DynamicResource gray-700-brush}">
+                                BorderBrush="{DynamicResource box-border-brush}" 
+                                Background="{DynamicResource box-background-brush}">
                             <!--Для отображения введенного текста-->
                             <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center"/>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="true">
-                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource blue-gray-500-brush}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource second-background-brush}"/>
                             <Setter TargetName="border" Property="BorderThickness" Value="1"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -58,21 +58,21 @@
     <Style x:Key="password-box-param">
         <Setter Property="PasswordBox.Margin" Value="0"/>
         <Setter Property="PasswordBox.Padding" Value="10 5"/>
-        <Setter Property="PasswordBox.Foreground" Value="{DynamicResource gray-200-brush}"/>
+        <Setter Property="PasswordBox.Foreground" Value="{DynamicResource box-foreground-brush}"/>
         <Setter Property="PasswordBox.Template">
             <Setter.Value>
                 <ControlTemplate TargetType="PasswordBox">
                     <Grid>
                         <Border BorderThickness="0 0 0 1" x:Name="border"
-                                BorderBrush="{DynamicResource gray-800-brush}" 
-                                Background="{DynamicResource gray-700-brush}">
+                                BorderBrush="{DynamicResource box-border-brush}" 
+                                Background="{DynamicResource box-background-brush}">
                             <!--Для отображения введенного текста-->
                             <ScrollViewer Margin="0" x:Name="PART_ContentHost" VerticalAlignment="Center"/>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="true">
-                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource blue-gray-500-brush}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource second-background-brush}"/>
                             <Setter TargetName="border" Property="BorderThickness" Value="1"/>
                         </Trigger>
                     </ControlTemplate.Triggers>

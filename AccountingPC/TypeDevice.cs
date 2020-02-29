@@ -15,6 +15,7 @@ namespace AccountingPC
         Projector,
         InteractiveWhiteboard,
         NetworkSwitch,
-        OtherEquipment
+        OtherEquipment,
+        ProjectorScreen,
     }
 }

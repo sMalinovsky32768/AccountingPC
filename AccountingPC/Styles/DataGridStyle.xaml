@@ -16,22 +16,25 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" 
-                                                                      Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-900}"/>
+                                                                      Storyboard.TargetProperty="(Shape.Fill).
+                                                                      (GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                                      Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource blue-gray-900}"/>
+                                                                      Storyboard.TargetProperty="(Shape.Fill).
+                                                                      (GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Arrow">
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" 
+                                                                       Storyboard.TargetName="Arrow">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
@@ -41,22 +44,22 @@
                         <Rectangle x:Name="Border" SnapsToDevicePixels="True">
                             <Rectangle.Stroke>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="{DynamicResource gray-700}" Offset="0"/>
-                                    <GradientStop Color="{DynamicResource gray-800}" Offset="1"/>
+                                    <GradientStop Color="{DynamicResource box-background}" Offset="0"/>
+                                    <GradientStop Color="{DynamicResource box-border}" Offset="1"/>
                                 </LinearGradientBrush>
                             </Rectangle.Stroke>
                             <Rectangle.Fill>
                                 <LinearGradientBrush EndPoint="0.5,1"
                                    StartPoint="0.5,0">
-                                    <GradientStop Color="{DynamicResource gray-600}" Offset="0"/>
-                                    <GradientStop Color="{DynamicResource gray-800}" Offset="1"/>
+                                    <GradientStop Color="{DynamicResource second-border}" Offset="0"/>
+                                    <GradientStop Color="{DynamicResource box-border}" Offset="1"/>
                                 </LinearGradientBrush>
                             </Rectangle.Fill>
                         </Rectangle>
                         <Polygon x:Name="Arrow" HorizontalAlignment="Right" Margin="8,8,3,3" Opacity="0.15" 
                                  Points="0,10 10,10 10,0" Stretch="Uniform" VerticalAlignment="Bottom">
                             <Polygon.Fill>
-                                <SolidColorBrush Color="{DynamicResource gray-500}"/>
+                                <SolidColorBrush Color="{DynamicResource second-background}"/>
                             </Polygon.Fill>
                         </Polygon>
                     </Grid>
@@ -67,17 +70,17 @@
 
     <!--Style and template for the DataGrid.-->
     <Style TargetType="{x:Type DataGrid}">
-        <Setter Property="Foreground" Value="{DynamicResource gray-200-brush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource box-foreground-brush}"/>
         <Setter Property="BorderBrush">
             <Setter.Value>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="{DynamicResource gray-700}" Offset="0"/>
-                    <GradientStop Color="{DynamicResource gray-800}" Offset="1"/>
+                    <GradientStop Color="{DynamicResource box-background}" Offset="0"/>
+                    <GradientStop Color="{DynamicResource box-border}" Offset="1"/>
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
         <Setter Property="GridLinesVisibility" Value="Horizontal"/>
-        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource gray-400-brush}"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource second-background-brush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
@@ -89,7 +92,7 @@
                     <Border x:Name="border" SnapsToDevicePixels="True" BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
                         <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource gray-700}"/><!--Меняет цвет фона всего DataGrid-->
+                            <SolidColorBrush Color="{DynamicResource box-background}"/><!--Меняет цвет фона всего DataGrid-->
                         </Border.Background>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -97,7 +100,7 @@
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="border"
                                                                       Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource blue-gray-700}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource second-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -181,7 +184,7 @@
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="border"
                                                 Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource blue-gray-300}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource accent}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -198,7 +201,7 @@
     <Style TargetType="{x:Type DataGridRow}">
         <Setter Property="Background">
             <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource gray-500}"/>
+                <SolidColorBrush Color="{DynamicResource second-background}"/>
             </Setter.Value>
         </Setter>
         <Setter Property="SnapsToDevicePixels" Value="true"/>
@@ -218,7 +221,7 @@
                         <Border.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="Transparent" Offset="0"/>
-                                <GradientStop Color="{DynamicResource gray-800}" Offset="1"/>
+                                <GradientStop Color="{DynamicResource box-border}" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
                         <VisualStateManager.VisualStateGroups>
@@ -231,13 +234,13 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[0].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-900}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border" 
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[1].(GradientStop.Color)">
 
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-400}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource alter-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -252,12 +255,12 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[0].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-700}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-800}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-border}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -267,12 +270,12 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[0].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-600}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource second-border}"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-800}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-border}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -282,12 +285,12 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[0].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-500}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource second-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-800}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-border}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -297,12 +300,12 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[0].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-500}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource second-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-800}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-border}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -312,12 +315,12 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[0].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-500}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource second-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-800}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-border}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -327,12 +330,12 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[0].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-500}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource second-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-800}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-border}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -342,12 +345,12 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[0].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-500}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource second-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-800}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-border}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -361,12 +364,12 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[0].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-700}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-700}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -376,12 +379,12 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[0].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-700}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="DGR_Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-700}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -406,7 +409,8 @@
                                 RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
                             <DataGridRowHeader Grid.RowSpan="2" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
                                                Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Row}, 
-                                Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                Converter={x:Static DataGrid.HeadersVisibilityConverter}, 
+                                RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
                         </SelectiveScrollingGrid>
                     </Border>
                 </ControlTemplate>
@@ -431,6 +435,7 @@
 
     <!--Style and template for the DataGridRowHeader.-->
     <Style TargetType="{x:Type DataGridRowHeader}">
+        <Setter Property="Width" Value="5"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
@@ -450,7 +455,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="rowHeaderBorder"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-700}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -470,8 +475,8 @@
                         <Border x:Name="rowHeaderBorder" Width="10" BorderThickness="0">
                             <Border.BorderBrush>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="{DynamicResource gray-800}" Offset="0"/>
-                                    <GradientStop Color="{DynamicResource gray-900}" Offset="1"/>
+                                    <GradientStop Color="{DynamicResource box-border}" Offset="0"/>
+                                    <GradientStop Color="{DynamicResource background}" Offset="1"/>
                                 </LinearGradientBrush>
                             </Border.BorderBrush>
                             <Border.Background>
@@ -522,14 +527,14 @@
                         <Border x:Name="columnHeaderBorder" BorderThickness="0" Padding="{TemplateBinding Padding}">
                             <Border.BorderBrush>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="{DynamicResource gray-800}" Offset="0"/>
-                                    <GradientStop Color="{DynamicResource gray-900}" Offset="1"/>
+                                    <GradientStop Color="{DynamicResource box-border}" Offset="0"/>
+                                    <GradientStop Color="{DynamicResource background}" Offset="1"/>
                                 </LinearGradientBrush>
                             </Border.BorderBrush>
                             <Border.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="{DynamicResource gray-700}" Offset="0"/>
-                                    <GradientStop Color="{DynamicResource gray-800}" Offset="1"/>
+                                    <GradientStop Color="{DynamicResource box-background}" Offset="0"/>
+                                    <GradientStop Color="{DynamicResource box-border}" Offset="1"/>
                                 </LinearGradientBrush>
                             </Border.Background>
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -546,8 +551,8 @@
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="{DynamicResource gray-700}" Offset="0"/>
-                    <GradientStop Color="{DynamicResource gray-800}" Offset="1"/>
+                    <GradientStop Color="{DynamicResource box-background}" Offset="0"/>
+                    <GradientStop Color="{DynamicResource box-border}" Offset="1"/>
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>

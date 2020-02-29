@@ -11,7 +11,7 @@
         <CommandBinding Command="{x:Static local:ParametersWindow.ExitCommand}" Executed="ExitApp"/>
     </Window.CommandBindings>
     <Border RenderTransformOrigin="0.5,0.5" BorderThickness="0" 
-            BorderBrush="{DynamicResource gray-900-brush}" Background="{DynamicResource gray-900-brush}">
+            BorderBrush="{DynamicResource background-brush}" Background="{DynamicResource background-brush}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -25,9 +25,9 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{Binding Title, ElementName=window}" Padding="5 2 0 2"
-                           Foreground="{DynamicResource gray-200-brush}" Background="{DynamicResource gray-800-brush}"/>
-                <StackPanel Grid.Column="1" Background="{DynamicResource gray-800-brush}" MouseLeftButtonDown="Border_MouseLeftButtonDown"/>
-                <StackPanel Grid.Column="2" Orientation="Horizontal" Background="{DynamicResource gray-800-brush}">
+                           Foreground="{DynamicResource box-foreground-brush}" Background="{DynamicResource box-border-brush}"/>
+                <StackPanel Grid.Column="1" Background="{DynamicResource box-border-brush}" MouseLeftButtonDown="Border_MouseLeftButtonDown"/>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Background="{DynamicResource box-border-brush}">
                     <Button x:Name="buttonExit" Height="20" 
                             Style="{DynamicResource controlButton}" Command="{x:Static local:AccountingPCWindow.ExitCommand}">
                         <Image Source="images/window-close.png"/>
@@ -51,8 +51,8 @@
                 <Frame x:Name="frameSettings" Grid.Column="2" Source="/AccountingPC;component/ParametersPages/ParametersBasicPage.xaml" NavigationUIVisibility="Hidden"/>
             </Grid>
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="Отмена" Style="{DynamicResource btn-dark}" Padding="20 5" Margin="5" IsCancel="True" Click="ButtonClick"/>
-                <Button Content="ОК" Style="{DynamicResource btn-dark}" Padding="20 5" Margin="5" IsDefault="True" Click="ButtonClick"/>
+                <Button Content="Отмена" Style="{DynamicResource btn}" Padding="20 5" Margin="5" IsCancel="True" Click="ButtonClick"/>
+                <Button Content="ОК" Style="{DynamicResource btn}" Padding="20 5" Margin="5" IsDefault="True" Click="ButtonClick"/>
             </StackPanel>
         </Grid>
     </Border>

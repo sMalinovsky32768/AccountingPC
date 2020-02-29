@@ -13,7 +13,7 @@
         <CommandBinding Command="{x:Static local:ChangeDeviceWindow.ExitCommand}" Executed="ExitApp"/>
     </Window.CommandBindings>
     <Border RenderTransformOrigin="0.5,0.5" BorderThickness="0" 
-            BorderBrush="{DynamicResource gray-900-brush}" Background="{DynamicResource gray-900-brush}">
+            BorderBrush="{DynamicResource background-brush}" Background="{DynamicResource background-brush}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -27,9 +27,9 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{Binding Title, ElementName=window}" Padding="5 2 0 2"
-                           Foreground="{DynamicResource gray-200-brush}" Background="{DynamicResource gray-800-brush}"/>
-                <StackPanel Grid.Column="1" Background="{DynamicResource gray-800-brush}" MouseLeftButtonDown="Border_MouseLeftButtonDown"/>
-                <StackPanel Grid.Column="2" Orientation="Horizontal" Background="{DynamicResource gray-800-brush}">
+                           Foreground="{DynamicResource box-foreground-brush}" Background="{DynamicResource box-border-brush}"/>
+                <StackPanel Grid.Column="1" Background="{DynamicResource box-border-brush}" MouseLeftButtonDown="Border_MouseLeftButtonDown"/>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Background="{DynamicResource box-border-brush}">
                     <Button x:Name="buttonExit" Height="20" 
                             Style="{DynamicResource controlButton}" Command="{x:Static local:ChangeDeviceWindow.ExitCommand}">
                         <Image Source="images/window-close.png"/>
@@ -42,12 +42,16 @@
                         <Setter Property="Padding" Value="5"/>
                         <Setter Property="Margin" Value="5"/>
                     </Style>
+                    <Style TargetType="ComboBox" BasedOn="{StaticResource comboBox}">
+                        <Setter Property="Padding" Value="5"/>
+                        <Setter Property="Margin" Value="5"/>
+                    </Style>
                     <Style TargetType="TextBlock">
                         <Setter Property="FontSize" Value="14"/>
                         <Setter Property="Margin" Value="10,20,10,5"/>
                         <Setter Property="VerticalAlignment" Value="Center"/>
                         <Setter Property="FontFamily" Value="Source Sans Pro"/>
-                        <Setter Property="Foreground" Value="{DynamicResource gray-200-brush}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource box-foreground-brush}"/>
                     </Style>
                 </Grid.Resources>
                 <Grid x:Name="pcGrid">
@@ -107,7 +111,7 @@
                             </TextBox.Text>
                         </TextBox>
                     </Grid>
-                    <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                    <Grid Grid.Row="1" Grid.ColumnSpan="2">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -123,6 +127,33 @@
                             </TextBox.Text>
                         </TextBox>
                     </Grid>
+                    <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Материнская плата"/>
+                        <!--<TextBox Grid.Row="1" x:Name="motherboardPC">
+                            <TextBox.Text>
+                                <Binding Path="Motherboard">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>-->
+                        <ComboBox Grid.Row="1" x:Name="motherboardPC" IsEditable="True" KeyUp="ComboBox_KeyDown"
+                                  IsTextSearchEnabled="False" StaysOpenOnEdit="True"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Процессор"/>
+                        <ComboBox Grid.Row="1" x:Name="cpuPC" IsEditable="True" KeyUp="ComboBox_KeyDown" 
+                                  IsTextSearchEnabled="False" StaysOpenOnEdit="True"/>
+                    </Grid>
                 </Grid>
                 <Grid x:Name="notebookGrid" Visibility="Hidden">
                     
@@ -130,7 +161,7 @@
             </Grid>
             <Grid Grid.Row="2">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Content="Сохранить" Style="{DynamicResource btn-dark}" Margin="5" Padding="10 5" Click="SaveChanges"/>
+                    <Button Content="Сохранить" Style="{DynamicResource btn}" Margin="5" Padding="10 5" Click="SaveChanges"/>
                 </StackPanel>
             </Grid>
         </Grid>

@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen" Style="{DynamicResource ResourceKey=window}" 
         WindowStyle="None">
     <Window.Resources>
-        <Style x:Key="btn-dark-main" BasedOn="{StaticResource ResourceKey=btn-dark}">
+        <Style x:Key="btn-main" BasedOn="{StaticResource ResourceKey=btn}">
             <Setter Property="Button.Margin" Value="10 5 10 10"/>
         </Style>
         <Style x:Key="text-box-main" BasedOn="{StaticResource ResourceKey=text-box}">
@@ -23,7 +23,7 @@
             <Setter Property="TextBlock.Margin" Value="10,20,10,5"/>
             <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
             <Setter Property="TextBlock.FontFamily" Value="Source Sans Pro"/>
-            <Setter Property="TextBlock.Foreground" Value="{DynamicResource gray-200-brush}"/>
+            <Setter Property="TextBlock.Foreground" Value="{DynamicResource box-foreground-brush}"/>
         </Style>
     </Window.Resources>
     <Window.CommandBindings>
@@ -31,7 +31,7 @@
         <!--Выход при Esc-->
     </Window.CommandBindings>
     <Border RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="Border_MouseLeftButtonDown" BorderThickness="0" 
-            BorderBrush="{DynamicResource gray-900-brush}" Background="{DynamicResource gray-900-brush}">
+            BorderBrush="{DynamicResource background-brush}" Background="{DynamicResource background-brush}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -43,11 +43,11 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Логин:" Style="{DynamicResource text-block-main}"/>
-            <TextBox Grid.Row="1" x:Name="loginTextBox" Style="{DynamicResource text-box-main}"/>
+            <TextBox Grid.Row="1" x:Name="loginTextBox" Style="{DynamicResource text-box-main}" Text="admin"/>
             <TextBlock Grid.Column="1" Text="Пароль:" Style="{DynamicResource text-block-main}"/>
-            <PasswordBox Grid.Row="1" Grid.Column="1" x:Name="passwordTextBox" Style="{DynamicResource password-box-main}"/>
+            <PasswordBox Grid.Row="1" Grid.Column="1" x:Name="passwordTextBox" Style="{DynamicResource password-box-main}" Password="admin"/>
             <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Войти" Click="LoginClick" 
-                IsDefault="True" Style="{DynamicResource btn-dark-main}" HorizontalContentAlignment="Right"/>
+                IsDefault="True" Style="{DynamicResource btn-main}" HorizontalContentAlignment="Right"/>
         </Grid>
     </Border>
 </Window>

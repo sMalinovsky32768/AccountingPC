@@ -35,7 +35,7 @@
                                     <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="ViewportHeight"/>
                                 </MultiBinding>
                             </RepeatButton.Visibility>
-                            <Path Fill="{DynamicResource gray-200-brush}"/>
+                            <Path Fill="{DynamicResource box-foreground-brush}"/>
                         </RepeatButton>
                         <RepeatButton Grid.Row="2" Grid.Column="0" 
                                       Command="{x:Static ScrollBar.LineDownCommand}" 
@@ -50,7 +50,7 @@
                                     <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="ViewportHeight"/>
                                 </MultiBinding>
                             </RepeatButton.Visibility>
-                            <Path Fill="{DynamicResource gray-200-brush}"/>
+                            <Path Fill="{DynamicResource box-foreground-brush}"/>
                         </RepeatButton>
                     </Grid>
                 </ControlTemplate>
@@ -62,7 +62,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border BorderThickness="0" Background="{DynamicResource gray-800-brush}">
+                    <Border BorderThickness="0" Background="{DynamicResource box-border-brush}">
                         <StackPanel ClipToBounds="True" Orientation="Horizontal"
                                     IsItemsHost="True"/>
                     </Border>
@@ -77,7 +77,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border BorderThickness="1" BorderBrush="{DynamicResource gray-600-brush}"/>
+                    <Border BorderThickness="1" BorderBrush="{DynamicResource second-border-brush}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -91,9 +91,9 @@
                 <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsSubmenuOpen}"
                        AllowsTransparency="True" Focusable="False" PopupAnimation="Fade">
                     <Border x:Name="SubmenuBorder" SnapsToDevicePixels="True"
-                            BorderThickness="1" Background="{DynamicResource gray-800-brush}">
+                            BorderThickness="1" Background="{DynamicResource box-border-brush}">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource gray-900}"/>
+                            <SolidColorBrush Color="{DynamicResource background}"/>
                         </Border.BorderBrush>
                         <ScrollViewer CanContentScroll="True" Style="{StaticResource MenuScrollViewer}">
                             <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
@@ -113,8 +113,8 @@
                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                             <LinearGradientBrush.GradientStops>
                                 <GradientStopCollection>
-                                    <GradientStop Color="{DynamicResource gray-700}"/>
-                                    <GradientStop Color="{DynamicResource gray-800}" Offset="1.0"/>
+                                    <GradientStop Color="{DynamicResource box-background}"/>
+                                    <GradientStop Color="{DynamicResource box-border}" Offset="1.0"/>
                                 </GradientStopCollection>
                             </LinearGradientBrush.GradientStops>
                         </LinearGradientBrush>
@@ -128,7 +128,7 @@
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource blue-gray-500}"/>
+                        <SolidColorBrush Color="{DynamicResource second-background}"/>
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -149,8 +149,8 @@
                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                             <LinearGradientBrush.GradientStops>
                                 <GradientStopCollection>
-                                    <GradientStop Color="{DynamicResource gray-700}"/>
-                                    <GradientStop Color="{DynamicResource gray-800}" Offset="1.0"/>
+                                    <GradientStop Color="{DynamicResource box-background}"/>
+                                    <GradientStop Color="{DynamicResource box-border}" Offset="1.0"/>
                                 </GradientStopCollection>
                             </LinearGradientBrush.GradientStops>
                         </LinearGradientBrush>
@@ -160,7 +160,7 @@
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource blue-gray-500}"/>
+                        <SolidColorBrush Color="{DynamicResource second-background}"/>
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -184,8 +184,8 @@
                                EndPoint="0,1">
                             <LinearGradientBrush.GradientStops>
                                 <GradientStopCollection>
-                                    <GradientStop Color="{DynamicResource gray-700}" Offset="0.0"/>
-                                    <GradientStop Color="{DynamicResource gray-800}" Offset="1.0"/>
+                                    <GradientStop Color="{DynamicResource box-background}" Offset="0.0"/>
+                                    <GradientStop Color="{DynamicResource box-border}" Offset="1.0"/>
                                 </GradientStopCollection>
                             </LinearGradientBrush.GradientStops>
                         </LinearGradientBrush>
@@ -194,8 +194,8 @@
                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                             <LinearGradientBrush.GradientStops>
                                 <GradientStopCollection>
-                                    <GradientStop Color="{DynamicResource gray-700}"/>
-                                    <GradientStop Color="{DynamicResource gray-800}" Offset="1.0"/>
+                                    <GradientStop Color="{DynamicResource box-background}"/>
+                                    <GradientStop Color="{DynamicResource box-border}" Offset="1.0"/>
                                 </GradientStopCollection>
                             </LinearGradientBrush.GradientStops>
                         </LinearGradientBrush>
@@ -203,7 +203,7 @@
                     <Path x:Name="CheckMark" Width="7" Height="7" Visibility="Hidden" 
                           SnapsToDevicePixels="False" StrokeThickness="2" Data="M 0 0 L 7 7 M 0 7 L 7 0">
                         <Path.Stroke>
-                            <SolidColorBrush Color="{DynamicResource blue-gray-500}"/>
+                            <SolidColorBrush Color="{DynamicResource second-background}"/>
                         </Path.Stroke>
                     </Path>
                 </Border>
@@ -229,14 +229,14 @@
                     <Setter.Value>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="Transparent" Offset="0"/>
-                            <GradientStop Color="{DynamicResource gray-800}" Offset="1"/>
+                            <GradientStop Color="{DynamicResource box-border}" Offset="1"/>
                         </LinearGradientBrush>
                     </Setter.Value>
                 </Setter>
                 <Setter Property="BorderBrush" TargetName="Border">
                     <Setter.Value>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="{DynamicResource gray-800}" Offset="0"/>
+                            <GradientStop Color="{DynamicResource box-border}" Offset="0"/>
                             <GradientStop Color="Transparent" Offset="1"/>
                         </LinearGradientBrush>
                     </Setter.Value>
@@ -245,7 +245,7 @@
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource blue-gray-500}"/>
+                        <SolidColorBrush Color="{DynamicResource second-background}"/>
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -267,16 +267,16 @@
                            Text="{TemplateBinding InputGestureText}" Margin="5,2,2,2" DockPanel.Dock="Right"/>
                 <Path Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 0 7 L 4 3.5 Z">
                     <Path.Fill>
-                        <SolidColorBrush Color="{DynamicResource blue-gray-500}"/>
+                        <SolidColorBrush Color="{DynamicResource second-background}"/>
                     </Path.Fill>
                 </Path>
                 <Popup x:Name="Popup" Placement="Right" HorizontalOffset="-4" 
                        IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" 
                        Focusable="False" PopupAnimation="Fade">
                     <Border x:Name="SubmenuBorder" SnapsToDevicePixels="True" 
-                            Background="{DynamicResource gray-700-brush}" BorderThickness="1">
+                            Background="{DynamicResource box-background-brush}" BorderThickness="1">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource gray-800}"/>
+                            <SolidColorBrush Color="{DynamicResource box-border}"/>
                         </Border.BorderBrush>
                         <ScrollViewer CanContentScroll="True" Style="{StaticResource MenuScrollViewer}">
                             <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
@@ -294,14 +294,14 @@
                     <Setter.Value>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="Transparent" Offset="0"/>
-                            <GradientStop Color="{DynamicResource gray-800}" Offset="1"/>
+                            <GradientStop Color="{DynamicResource box-border}" Offset="1"/>
                         </LinearGradientBrush>
                     </Setter.Value>
                 </Setter>
                 <Setter Property="BorderBrush" TargetName="Border">
                     <Setter.Value>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="{DynamicResource gray-800}" Offset="0"/>
+                            <GradientStop Color="{DynamicResource box-border}" Offset="0"/>
                             <GradientStop Color="Transparent" Offset="1"/>
                         </LinearGradientBrush>
                     </Setter.Value>
@@ -314,7 +314,7 @@
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource blue-gray-500}"/>
+                        <SolidColorBrush Color="{StaticResource second-background}"/>
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -323,7 +323,7 @@
     
     <!-- MenuItem Style -->
     <Style x:Key="{x:Type MenuItem}" TargetType="{x:Type MenuItem}">
-        <Setter Property="Foreground" Value="{DynamicResource gray-200-brush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource box-foreground-brush}"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">

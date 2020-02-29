@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccountingPC.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace AccountingPC.ParametersPages
         public ParametersStylesPage()
         {
             InitializeComponent();
+            Theme.SelectedIndex = Settings.Default.THEME;
+        }
+
+        private void Theme_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Settings.Default.THEME = Theme.SelectedIndex;
         }
     }
 }

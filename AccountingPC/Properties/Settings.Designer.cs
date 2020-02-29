@@ -58,5 +58,17 @@ namespace AccountingPC.Properties {
                 this["SHUTDOWN_ON_EXPLICIT"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int THEME {
+            get {
+                return ((int)(this["THEME"]));
+            }
+            set {
+                this["THEME"] = value;
+            }
+        }
     }
 }

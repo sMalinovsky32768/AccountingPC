@@ -39,6 +39,7 @@ namespace AccountingPC
             new InputGestureCollection(new InputGesture[] { new KeyGesture(Key.F2, ModifierKeys.Alt) }));
         SqlDataAdapter adapter;
         DataSet set;
+        TypeDevice typeDevice;
 
         public AccountingPCWindow()
         {
@@ -158,7 +159,7 @@ namespace AccountingPC
         {
             DataRow row = ((DataRowView)view.SelectedItem).Row;
             int id = Convert.ToInt32(row[0]);
-            new ChangeDeviceWindow(TypeDevice.PC, id).ShowDialog();
+            new ChangeDeviceWindow(TypeDevice.PC, id, TypeChange.Change).ShowDialog();
             UpdateDataGrid();
         }
 
@@ -181,20 +182,151 @@ namespace AccountingPC
 
         private void UpdateDataGrid()
         {
+            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             switch (list.SelectedIndex)
             {
                 case 0:
-                    adapter = new SqlDataAdapter("SELECT PC.ID as 'ID', PC.InventoryNumber as 'Инвентарный номер', " +
-                        "PC.Name as 'Наименование', str(PC.Cost, 10, 2) + N' ₽' as 'Цена', " +
-                        "(select dbo.getSocketNameByID(SocketID)) as 'Сокет', " +
-                        "(select dbo.getFullProcessorName(PC.CPUID)) as 'Процессор', " +
-                        "str(PC.RAM, 3, 0) + N' ГБ' as 'ОЗУ', VideoCard as 'Видеокарта', " +
-                        "str(PC.HDDCapacityTB, 4, 1) + N' ТБ' as 'Объем HDD' from PC",
-                        ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+                    adapter = new SqlDataAdapter("SELECT PC.ID as 'ID', " +
+                        "PC.InventoryNumber as 'Инвентарный номер', " +
+                        "PC.Name as 'Наименование', " +
+                        "str(PC.Cost, 10, 2) + N' ₽' as 'Цена', " +
+                        "MotherBoard as 'Материнская плата', " +
+                        "CPUModel as 'Процессор', " +
+                        "str(PC.RAMGB, 3, 0) + N' ГБ' as 'ОЗУ', " +
+                        "VideoCard as 'Видеокарта', " +
+                        "str(PC.HDDCapacityGB, 4, 1) + N' ГБ' as 'Объем HDD', " +
+                        "dbo.GetNameOS(OSID) as 'Операционная система', " +
+                        "dbo.GetNumberInvoice(InvoiceID) as 'Номер накладной', " +
+                        "dbo.GetLocalion(PlaceID) as 'Расположение' from PC", connectionString);
                     set = new DataSet();
                     adapter.Fill(set);
                     view.ItemsSource = set.Tables[0].DefaultView;
                     view.Columns[0].Visibility = Visibility.Collapsed;
+                    typeDevice = TypeDevice.PC;
+                    break;
+                case 1:
+                    adapter = new SqlDataAdapter("SELECT Notebook.ID as 'ID', " +
+                        "Notebook.InventoryNumber as 'Инвентарный номер', " +
+                        "dbo.GetTypeNotebook(TypeNotebookID) as 'Тип', " +
+                        "Notebook.Name as 'Наименование', " +
+                        "str(Notebook.Cost, 10, 2) + N' ₽' as 'Цена', " +
+                        "CPUModel as 'Процессор', " +
+                        "str(RAMGB, 3, 0) + N' ГБ' as 'ОЗУ', " +
+                        "VideoCard as 'Видеокарта', " +
+                        "ScreenDiagonal as 'Диагональ экрана', " +
+                        "str(HDDCapacityGB, 4, 1) + N' ГБ' as 'Объем HDD', " +
+                        "dbo.GetNameOS(OSID) as 'Операционная система', " +
+                        "dbo.GetNumberInvoice(InvoiceID) as 'Номер накладной', " +
+                        "dbo.GetLocalion(PlaceID) as 'Расположение' from Notebook", connectionString);
+                    set = new DataSet();
+                    adapter.Fill(set);
+                    view.ItemsSource = set.Tables[0].DefaultView;
+                    view.Columns[0].Visibility = Visibility.Collapsed;
+                    typeDevice = TypeDevice.Notebook;
+                    break;
+                case 2:
+                    adapter = new SqlDataAdapter("SELECT Monitor.ID as 'ID', " +
+                        "Monitor.InventoryNumber as 'Инвентарный номер', " +
+                        "Monitor.Name as 'Наименование', " +
+                        "str(Monitor.Cost, 10, 2) + N' ₽' as 'Цена', " +
+                        "ScreenDiagonal as 'Диагональ экрана', " +
+                        "dbo.GetNumberInvoice(InvoiceID) as 'Номер накладной', " +
+                        "dbo.GetLocalion(PlaceID) as 'Расположение' from Monitor", connectionString);
+                    set = new DataSet();
+                    adapter.Fill(set);
+                    view.ItemsSource = set.Tables[0].DefaultView;
+                    view.Columns[0].Visibility = Visibility.Collapsed;
+                    typeDevice = TypeDevice.Monitor;
+                    break;
+                case 3:
+                    adapter = new SqlDataAdapter("SELECT Projector.ID as 'ID', " +
+                        "Projector.InventoryNumber as 'Инвентарный номер', " +
+                        "Projector.Name as 'Наименование', " +
+                        "str(Projector.Cost, 10, 2) + N' ₽' as 'Цена', " +
+                        "MaxDiagonal as 'Максимальная диагональ', " +
+                        "dbo.GetProjectorTechnology(ProjectorTechnologyID) as 'Технология проецирования', " +
+                        "dbo.GetNumberInvoice(InvoiceID) as 'Номер накладной', " +
+                        "dbo.GetLocalion(PlaceID) as 'Расположение' " +
+                        "from Projector", connectionString);
+                    set = new DataSet();
+                    adapter.Fill(set);
+                    view.ItemsSource = set.Tables[0].DefaultView;
+                    view.Columns[0].Visibility = Visibility.Collapsed;
+                    typeDevice = TypeDevice.Projector;
+                    break;
+                case 4:
+                    adapter = new SqlDataAdapter("SELECT InteractiveWhiteboard.ID as 'ID', " +
+                        "InteractiveWhiteboard.InventoryNumber as 'Инвентарный номер', " +
+                        "InteractiveWhiteboard.Name as 'Наименование', " +
+                        "str(InteractiveWhiteboard.Cost, 10, 2) + N' ₽' as 'Цена', " +
+                        "Diagonal as 'Диагональ', " +
+                        "dbo.GetNumberInvoice(InvoiceID) as 'Номер накладной', " +
+                        "dbo.GetLocalion(PlaceID) as 'Расположение' " +
+                        "from InteractiveWhiteboard", connectionString);
+                    set = new DataSet();
+                    adapter.Fill(set);
+                    view.ItemsSource = set.Tables[0].DefaultView;
+                    view.Columns[0].Visibility = Visibility.Collapsed;
+                    typeDevice = TypeDevice.InteractiveWhiteboard;
+                    break;
+                case 5:
+                    adapter = new SqlDataAdapter("SELECT ProjectorScreen.ID as 'ID', " +
+                        "ProjectorScreen.InventoryNumber as 'Инвентарный номер', " +
+                        "ProjectorScreen.Name as 'Наименование', " +
+                        "str(ProjectorScreen.Cost, 10, 2) + N' ₽' as 'Цена', " +
+                        "Diagonal as 'Диагональ', " +
+                        "IsElectronicDrive as 'С электроприводом', " +
+                        "dbo.GetNumberInvoice(InvoiceID) as 'Номер накладной', " +
+                        "dbo.GetLocalion(PlaceID) as 'Расположение' " +
+                        "from ProjectorScreen", connectionString);
+                    set = new DataSet();
+                    adapter.Fill(set);
+                    view.ItemsSource = set.Tables[0].DefaultView;
+                    view.Columns[0].Visibility = Visibility.Collapsed;
+                    typeDevice = TypeDevice.ProjectorScreen;
+                    break;
+                case 6:
+                    adapter = new SqlDataAdapter("SELECT PrinterScanner.ID as 'ID', " +
+                        "dbo.GetTypePrinter(TypePrinterID) as 'Тип', " +
+                        "PrinterScanner.InventoryNumber as 'Инвентарный номер', " +
+                        "PrinterScanner.Name as 'Наименование', " +
+                        "str(PrinterScanner.Cost, 10, 2) + N' ₽' as 'Цена', " +
+                        "dbo.GetPaperSize(PaperSizeID) as 'Максимальный формат', " +
+                        "dbo.GetNumberInvoice(InvoiceID) as 'Номер накладной', " +
+                        "dbo.GetLocalion(PlaceID) as 'Расположение' from PrinterScanner", connectionString);
+                    set = new DataSet();
+                    adapter.Fill(set);
+                    view.ItemsSource = set.Tables[0].DefaultView;
+                    view.Columns[0].Visibility = Visibility.Collapsed;
+                    typeDevice = TypeDevice.PrinterScanner;
+                    break;
+                case 7:
+                    adapter = new SqlDataAdapter("SELECT NetworkSwitch.ID as 'ID', " +
+                        "NetworkSwitch.InventoryNumber as 'Инвентарный номер', " +
+                        "NetworkSwitch.Name as 'Наименование', " +
+                        "str(NetworkSwitch.Cost, 10, 2) + N' ₽' as 'Цена', " +
+                        "NumberOfPorts as 'Количество портов', " +
+                        "dbo.GetNumberInvoice(InvoiceID) as 'Номер накладной', " +
+                        "dbo.GetLocalion(PlaceID) as 'Расположение' from NetworkSwitch", connectionString);
+                    set = new DataSet();
+                    adapter.Fill(set);
+                    view.ItemsSource = set.Tables[0].DefaultView;
+                    view.Columns[0].Visibility = Visibility.Collapsed;
+                    typeDevice = TypeDevice.NetworkSwitch;
+                    break;
+                case 8:
+                    adapter = new SqlDataAdapter("SELECT OtherEquipment.ID as 'ID', " +
+                        "OtherEquipment.InventoryNumber as 'Инвентарный номер', " +
+                        "OtherEquipment.Name as 'Наименование', " +
+                        "str(OtherEquipment.Cost, 10, 2) + N' ₽' as 'Цена', " +
+                        "dbo.GetNumberInvoice(InvoiceID) as 'Номер накладной', " +
+                        "dbo.GetLocalion(PlaceID) as 'Расположение' " +
+                        "from OtherEquipment", connectionString);
+                    set = new DataSet();
+                    adapter.Fill(set);
+                    view.ItemsSource = set.Tables[0].DefaultView;
+                    view.Columns[0].Visibility = Visibility.Collapsed;
+                    typeDevice = TypeDevice.OtherEquipment;
                     break;
             }
         }

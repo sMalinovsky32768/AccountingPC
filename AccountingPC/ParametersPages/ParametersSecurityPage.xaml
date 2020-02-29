@@ -61,7 +61,7 @@
                     <StatusBarItem x:Name="changeStatus"/>
                 </StatusBar>
                 <Button Grid.Column="1" Content="Сменить" Width="100" HorizontalAlignment="Right" Click="ChangePasswordClick" 
-                        Style="{DynamicResource btn-dark}" Padding="10 5"/>
+                        Style="{DynamicResource btn}" Padding="10 5"/>
             </Grid>
         </Grid>
     </Grid>

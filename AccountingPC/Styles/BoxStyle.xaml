@@ -2,21 +2,21 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AccountingPC.Styles">
     <Style x:Key="text-box">
-        <Setter Property="TextBox.Foreground" Value="{DynamicResource gray-200-brush}"/>
+        <Setter Property="TextBox.Foreground" Value="{DynamicResource box-foreground-brush}"/>
         <Setter Property="TextBox.Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
                     <Grid>
                         <Border CornerRadius="5" BorderThickness="1" x:Name="border"
-                                BorderBrush="{DynamicResource gray-800-brush}" 
-                                Background="{DynamicResource gray-700-brush}">
+                                BorderBrush="{DynamicResource box-border-brush}" 
+                                Background="{DynamicResource box-background-brush}">
                             <!--Для отображения введенного текста-->
                             <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center"/>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="true">
-                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource blue-gray-500-brush}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource accent-brush}"/>
                             <Setter TargetName="border" Property="BorderThickness" Value="2"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -25,22 +25,22 @@
         </Setter>
     </Style>
     <Style x:Key="password-box">
-        <Setter Property="PasswordBox.Foreground" Value="{DynamicResource gray-200-brush}"/>
+        <Setter Property="PasswordBox.Foreground" Value="{DynamicResource box-foreground-brush}"/>
         <Setter Property="PasswordBox.Margin" Value="10"/>
         <Setter Property="PasswordBox.Template">
             <Setter.Value>
                 <ControlTemplate TargetType="PasswordBox">
                     <Grid>
                         <Border CornerRadius="5" BorderThickness="1" x:Name="border"
-                                BorderBrush="{DynamicResource gray-800-brush}" 
-                                Background="{DynamicResource gray-700-brush}">
+                                BorderBrush="{DynamicResource box-border-brush}" 
+                                Background="{DynamicResource box-background-brush}">
                             <!--Для отображения введенного текста-->
                             <ScrollViewer Margin="0" x:Name="PART_ContentHost" VerticalAlignment="Center"/>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="true">
-                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource blue-gray-500-brush}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource accent-brush}"/>
                             <Setter TargetName="border" Property="BorderThickness" Value="2"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -49,22 +49,22 @@
         </Setter>
     </Style>
     <Style x:Key="date-picker-text-box" TargetType="DatePickerTextBox">
-        <Setter Property="Foreground" Value="{DynamicResource gray-200-brush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource box-foreground-brush}"/>
         <Setter Property="Padding" Value="2"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="DatePickerTextBox">
                     <Grid>
                         <Border CornerRadius="2" BorderThickness="1" x:Name="border"
-                                BorderBrush="{DynamicResource blue-gray-700-brush}" 
-                                Background="{DynamicResource gray-700-brush}" Padding="{TemplateBinding Padding}">
+                                BorderBrush="{DynamicResource box-border-brush}" 
+                                Background="{DynamicResource box-background-brush}" Padding="{TemplateBinding Padding}">
                             <!--Для отображения введенного текста-->
                             <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center"/>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="true">
-                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource blue-gray-500-brush}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource accent-brush}"/>
                             <Setter TargetName="border" Property="BorderThickness" Value="2"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -77,48 +77,25 @@
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource CheckBoxFocusVisual}"/>
-        <Setter Property="Foreground" Value="{DynamicResource gray-200-brush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource box-foreground-brush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CheckBox}">
                     <BulletDecorator Background="Transparent">
                         <BulletDecorator.Bullet>
-                            <Border x:Name="Border" Width="15" Height="15" CornerRadius="0" BorderThickness="1">
-                                <Border.BorderBrush>
-                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                        <LinearGradientBrush.GradientStops>
-                                            <GradientStopCollection>
-                                                <GradientStop Color="{DynamicResource gray-800}" Offset="0.0"/>
-                                                <GradientStop Color="{DynamicResource gray-900}" Offset="1.0"/>
-                                            </GradientStopCollection>
-                                        </LinearGradientBrush.GradientStops>
-                                    </LinearGradientBrush>
-                                </Border.BorderBrush>
-                                <Border.Background>
-                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                        <LinearGradientBrush.GradientStops>
-                                            <GradientStopCollection>
-                                                <GradientStop Color="{DynamicResource gray-400}"/>
-                                                <GradientStop Color="{DynamicResource gray-700}" Offset="1.0"/>
-                                            </GradientStopCollection>
-                                        </LinearGradientBrush.GradientStops>
-                                    </LinearGradientBrush>
-
-                                </Border.Background>
+                            <Border x:Name="Border" Width="15" Height="15" CornerRadius="0" BorderThickness="1"
+                                    BorderBrush="{DynamicResource border-gradient-brush}" 
+                                    Background="{DynamicResource background-gradient-brush}">
                                 <Grid>
                                     <Path Visibility="Collapsed" Width="9" Height="9" x:Name="CheckMark"
                                           SnapsToDevicePixels="False" StrokeThickness="3" 
-                                          Data="M 0 0 L 9 9 M 0 9 L 9 0">
-                                        <Path.Stroke>
-                                            <SolidColorBrush Color="{DynamicResource gray-100}"/>
-                                        </Path.Stroke>
+                                          Data="M 0 0 L 9 9 M 0 9 L 9 0" Stroke="{DynamicResource foreground-brush}">
                                     </Path>
                                     <Path Visibility="Collapsed" Width="9" Height="9" x:Name="InderminateMark" 
-                                          Fill="{DynamicResource gray-200-brush}" SnapsToDevicePixels="False" 
-                                          StrokeThickness="3" Data="M 0 0 H 9 V 9 H -9 V -9 Z">
-                                        <Path.Stroke>
-                                            <SolidColorBrush Color="{DynamicResource gray-100}"/>
-                                        </Path.Stroke>
+                                          Fill="{DynamicResource box-foreground-brush}" SnapsToDevicePixels="False" 
+                                          StrokeThickness="3" Data="M 0 0 H 9 V 9 H -9 V -9 Z"
+                                          Stroke="{DynamicResource foreground-brush}">
                                     </Path>
                                 </Grid>
                             </Border>
@@ -132,7 +109,7 @@
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[1].
                                                                       (GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-500}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource second-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -142,19 +119,19 @@
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (GradientBrush.GradientStops)[1].
                                                                       (GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource blue-gray-600}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource second-border}"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
                                                                       Storyboard.TargetProperty="(Border.BorderBrush).
                                                                       (GradientBrush.GradientStops)[0].
                                                                       (GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-900}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
                                                                       Storyboard.TargetProperty="(Border.BorderBrush).
                                                                       (GradientBrush.GradientStops)[1].
                                                                       (GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-400}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource second-border}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -206,7 +183,7 @@
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
                                                           (GradientBrush.GradientStops)[1].(GradientStop.Color)"
                                                           Storyboard.TargetName="Border">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-500}"/>
+                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource second-border}"/>
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
@@ -216,16 +193,16 @@
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
                                                           (GradientBrush.GradientStops)[1].(GradientStop.Color)"
                                                           Storyboard.TargetName="Border">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-600}"/>
+                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource second-border}"/>
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).
                                                           (SolidColorBrush.Color)" Storyboard.TargetName="Arrow">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource blue-gray-200}"/>
+                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-foreground}"/>
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
                                                           (GradientBrush.GradientStops)[1].(GradientStop.Color)"
                                                           Storyboard.TargetName="Border">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-800}"/>
+                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource second-border}"/>
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
@@ -236,7 +213,7 @@
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
                                                           (GradientBrush.GradientStops)[1].(GradientStop.Color)"
                                                           Storyboard.TargetName="Border">
-                                <EasingColorKeyFrame KeyTime="0"  Value="{DynamicResource gray-600}"/>
+                                <EasingColorKeyFrame KeyTime="0"  Value="{DynamicResource second-border}"/>
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
@@ -244,38 +221,20 @@
                     <VisualState x:Name="Indeterminate"/>
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Border x:Name="Border" Grid.ColumnSpan="2" CornerRadius="5" BorderThickness="1">
-                <Border.BorderBrush>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="{DynamicResource gray-700}" Offset="0"/>
-                        <GradientStop Color="{DynamicResource gray-800}" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.BorderBrush>
-                <Border.Background>
-
-                    <LinearGradientBrush StartPoint="0,0"
-                             EndPoint="0,1">
-                        <LinearGradientBrush.GradientStops>
-                            <GradientStopCollection>
-                                <GradientStop Color="{DynamicResource gray-500}"/>
-                                <GradientStop Color="{DynamicResource gray-700}" Offset="1.0"/>
-                            </GradientStopCollection>
-                        </LinearGradientBrush.GradientStops>
-                    </LinearGradientBrush>
-
-                </Border.Background>
+            <Border x:Name="Border" Grid.ColumnSpan="2" CornerRadius="5" BorderThickness="0" 
+                    Background="{DynamicResource second-background-gradien-brush}">
             </Border>
             <Border Grid.Column="0" CornerRadius="2,0,0,2" Margin="1" >
                 <Border.Background>
-                    <SolidColorBrush Color="{DynamicResource gray-800}"/>
+                    <SolidColorBrush Color="{DynamicResource gray-700}"/>
                 </Border.Background>
             </Border>
-            <Path x:Name="Arrow" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <!--<Path x:Name="Arrow" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
                   Data="M 0 0 L 5 5 L 10 0 Z">
                 <Path.Fill>
                     <SolidColorBrush Color="{DynamicResource gray-200}"/>
                 </Path.Fill>
-            </Path>
+            </Path>-->
         </Grid>
     </ControlTemplate>
 
@@ -283,7 +242,7 @@
         <Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}"/>
     </ControlTemplate>
 
-    <Style x:Key="{x:Type ComboBox}" TargetType="{x:Type ComboBox}">
+    <Style x:Key="comboBox" TargetType="{x:Type ComboBox}">
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
@@ -304,7 +263,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_EditableTextBox"
                                                                       Storyboard.TargetProperty="(TextElement.Foreground).
                                                                       (SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-200}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-foreground}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -334,24 +293,19 @@
                                           Content="{TemplateBinding SelectionBoxItem}"
                                           ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                           ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                          TextElement.Foreground="{DynamicResource gray-200-brush}"
+                                          TextElement.Foreground="{DynamicResource box-foreground-brush}"
                                           Margin="10 5 23 5" VerticalAlignment="Stretch" HorizontalAlignment="Left">
                         </ContentPresenter>
                         <TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}"
                                  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="3,3,23,3" Focusable="True" 
-                                 Background="{DynamicResource gray-800-brush}" Visibility="Hidden" 
-                                 IsReadOnly="{TemplateBinding IsReadOnly}" Foreground="{DynamicResource gray-200-brush}"/>
+                                 Background="{DynamicResource box-background-brush}" Visibility="Hidden" 
+                                 IsReadOnly="{TemplateBinding IsReadOnly}" Foreground="{DynamicResource box-foreground-brush}"/>
                         <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}"
                                AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
                             <Grid x:Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}"
                                   MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                <Border x:Name="DropDownBorder" BorderThickness="1">
-                                    <Border.BorderBrush>
-                                        <SolidColorBrush Color="{DynamicResource gray-700}"/>
-                                    </Border.BorderBrush>
-                                    <Border.Background>
-                                        <SolidColorBrush Color="{DynamicResource gray-800}"/>
-                                    </Border.Background>
+                                <Border x:Name="DropDownBorder" BorderThickness="1" BorderBrush="{DynamicResource box-border-brush}"
+                                        Background="{DynamicResource box-background-brush}">
                                 </Border>
                                 <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
                                     <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
@@ -361,7 +315,8 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasItems" Value="false">
-                            <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
+                            <!--<Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>-->
+                            <Setter TargetName="DropDownBorder" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                         <Trigger Property="IsGrouping" Value="true">
                             <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
@@ -379,7 +334,7 @@
     <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle"  Value="true"/>
-        <Setter Property="Foreground" Value="{DynamicResource gray-200-brush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource box-foreground-brush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
@@ -392,7 +347,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-600}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource second-border}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -401,7 +356,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-700}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -424,16 +379,16 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
         <Setter Property="MinWidth" Value="120"/>
         <Setter Property="MinHeight" Value="95"/>
-        <Setter Property="Foreground" Value="{DynamicResource gray-200-brush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource box-foreground-brush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBox">
                     <Border Name="Border" BorderThickness="1" CornerRadius="2">
                         <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource gray-900}"/>
+                            <SolidColorBrush Color="{DynamicResource background}"/>
                         </Border.Background>
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource gray-900}"/>
+                            <SolidColorBrush Color="{DynamicResource background}"/>
                         </Border.BorderBrush>
                         <ScrollViewer Margin="0" Focusable="false">
                             <StackPanel Margin="2" IsItemsHost="True"/>
@@ -443,12 +398,12 @@
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="Border" Property="Background">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource gray-600}"/>
+                                    <SolidColorBrush Color="{DynamicResource second-border}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter TargetName="Border" Property="BorderBrush">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource gray-900}"/>
+                                    <SolidColorBrush Color="{DynamicResource background}"/>
                                 </Setter.Value>
 
                             </Setter>
@@ -481,7 +436,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-800}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-border}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -490,7 +445,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).
                                                                       (SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource gray-700}"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource box-background}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>

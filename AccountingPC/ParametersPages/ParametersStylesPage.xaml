@@ -7,8 +7,56 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ParametersStylesPage">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="PageStyleDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
-        <TextBlock Text="789"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <!--<DataGrid x:Name="baseSettings" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="Cell">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="ParameterNameGrid" Header="Параметр" IsReadOnly="True" Binding="{Binding Path=Name}"/>
+                    <DataGridComboBoxColumn x:Name="ParameterValueGrid" Header="Значение" Binding="{Binding Path=Value}"/>
+                </DataGrid.Columns>
+            </DataGrid>-->
+            <Grid x:Name="grid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <GridSplitter Grid.Column="1" Width="2" ResizeBehavior="PreviousAndNext" ShowsPreview="True" 
+                              Grid.RowSpan="{Binding RowDefinitions.Count, ElementName=grid, Mode=OneWay}"/>
+                <TextBlock Text="Параметр" Style="{Binding Mode=OneWay, Source={StaticResource header}}"/>
+                <TextBlock Grid.Column="2" Text="Значение" Style="{Binding Mode=OneWay, Source={StaticResource header}}"/>
+                <TextBlock Text="Тема" Grid.Row="1" Style="{DynamicResource property-name}"/>
+                <ComboBox x:Name="Theme" Grid.Row="1" Grid.Column="2" SelectionChanged="Theme_SelectionChanged">
+                    <ComboBoxItem Content="Темная"/>
+                    <ComboBoxItem Content="Светлая"/>
+                </ComboBox>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>
