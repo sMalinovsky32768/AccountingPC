@@ -8,17 +8,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/LightTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Color.xaml"/>
-                <ResourceDictionary Source="Styles/BlackTheme.xaml"/>
-                <ResourceDictionary Source="Styles/BoxStyle.xaml"/>
-                <ResourceDictionary Source="Styles/ButtonStyle.xaml"/>
-                <ResourceDictionary Source="Styles/CalendarStyle.xaml"/>
-                <ResourceDictionary Source="Styles/CommonStyle.xaml"/>
-                <ResourceDictionary Source="Styles/DataGridStyle.xaml"/>
-                <ResourceDictionary Source="Styles/MenuStyle.xaml"/>
-                <ResourceDictionary Source="Styles/Scroll.xaml"/>
-            </ResourceDictionary.MergedDictionaries>-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

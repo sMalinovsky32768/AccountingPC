@@ -137,7 +137,7 @@
                         <ContentPresenter x:Name="NormalText" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="5,1,5,1">
                             <TextElement.Foreground>
-                                <SolidColorBrush Color="#eeeeee"/>
+                                <SolidColorBrush Color="{DynamicResource box-foreground}"/>
                             </TextElement.Foreground>
                         </ContentPresenter>
                         <Path x:Name="Blackout" Opacity="0" Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"

@@ -86,7 +86,9 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
-                            <Grid></Grid>
+                            <Grid>
+                                <Calendar/>
+                            </Grid>
                             <Grid Grid.Column="1">
                                 <Grid.Resources>
                                     <Style TargetType="{x:Type Button}" x:Key="btn-view" BasedOn="{StaticResource btn}">
